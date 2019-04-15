@@ -1,7 +1,7 @@
 import Vue from "vue";
 import moment from "moment";
 import { Component, Prop } from "vue-property-decorator";
-import { IPaging } from "./navigation-model";
+import { IPaging, SiteWhereServerConnectivity } from "./interfaces";
 import { Store } from "vuex";
 import { AxiosResponse } from "axios";
 import { AxiosPromise } from "axios";
@@ -14,16 +14,6 @@ import {
 
 // @ts-ignore: Unused import
 import { Validation } from "vuelidate";
-
-/**
- * Information for
- */
-export interface SiteWhereServerConnectivity {
-  protocol?: string;
-  server?: string;
-  port?: number;
-  jwt?: string;
-}
 
 /**
  * Base class for components that display lists based on

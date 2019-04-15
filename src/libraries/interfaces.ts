@@ -8,6 +8,16 @@ export type Refs<T extends object> = Vue["$refs"] & T;
 export type IPageSizes = { text: string; value: number }[];
 
 /**
+ * Information for
+ */
+export interface SiteWhereServerConnectivity {
+  protocol?: string;
+  server?: string;
+  port?: number;
+  jwt?: string;
+}
+
+/**
  * Annotates components that can have the current route injected.
  */
 export interface WithRoute {

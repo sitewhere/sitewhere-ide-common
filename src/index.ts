@@ -1,2 +1,2 @@
-export * from "./libraries/component-model";
-export * from "./libraries/navigation-model";
+export * from "./libraries/components";
+export * from "./libraries/interfaces";
