@@ -1,4 +1,5 @@
 import typescript from "rollup-plugin-typescript2";
+import vue from "rollup-plugin-vue";
 
 export default [
   {
@@ -6,15 +7,8 @@ export default [
     output: {
       file: "dist/index.js",
       format: "umd",
-      name: "sitewhere-ide-common",
-      globals: {
-        axios: "axios",
-        vue: "Vue",
-        moment: "moment",
-        "vue-property-decorator": "vuePropertyDecorator"
-      }
+      name: "sitewhere-ide-common"
     },
-    external: ["axios", "vue", "moment", "vue-property-decorator"],
-    plugins: [typescript()]
+    plugins: [typescript({ clean: true }), vue()]
   }
 ];
