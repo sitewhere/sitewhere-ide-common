@@ -1,14 +1,15 @@
 {
   "name": "sitewhere-ide-common",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Common base library used for SiteWhere IDE products",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/sitewhere-ide-common.umd.js",
+  "module": "dist/sitewhere-ide-common.js",
+  "types": "dist/sitewhere-ide-common.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "tsc -p ./src/tsconfig.json && rollup -c"
   },
   "repository": {
     "type": "git",

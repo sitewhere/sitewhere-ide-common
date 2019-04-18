@@ -1,14 +1,9 @@
-import typescript from "rollup-plugin-typescript2";
-import vue from "rollup-plugin-vue";
-
-export default [
-  {
-    input: "src/index.ts",
-    output: {
-      file: "dist/index.js",
-      format: "cjs",
-      name: "sitewhere-ide-common"
-    },
-    plugins: [typescript({ clean: true }), vue()]
-  }
-];
+export default {
+  input: "dist/sitewhere-ide-common.js",
+  output: {
+    name: "sitewhere-ide-common",
+    file: "dist/sitewhere-ide-common.umd.js",
+    format: "umd"
+  },
+  external: ["vue", "vue-property-decorator", "moment"]
+};
