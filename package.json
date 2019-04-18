@@ -1,8 +1,8 @@
 {
   "name": "sitewhere-ide-common",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Common base library used for SiteWhere IDE products",
-  "main": "dist/sitewhere-ide-common.umd.js",
+  "main": "dist/sitewhere-ide-common.cjs.js",
   "module": "dist/sitewhere-ide-common.js",
   "types": "dist/sitewhere-ide-common.d.ts",
   "files": [
