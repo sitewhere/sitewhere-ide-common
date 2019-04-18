@@ -6,7 +6,7 @@ export default [
     input: "src/index.ts",
     output: {
       file: "dist/index.js",
-      format: "es",
+      format: "cjs",
       name: "sitewhere-ide-common"
     },
     plugins: [typescript({ clean: true }), vue()]

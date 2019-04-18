@@ -1,6 +1,6 @@
 {
   "name": "sitewhere-ide-common",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Common base library used for SiteWhere IDE products",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,7 +30,8 @@
     "moment": "^2.24.0",
     "vue": "^2.6.8",
     "vue-router": "^3.0.2",
-    "vuex": "^3.1.0"
+    "vuex": "^3.1.0",
+    "vue-property-decorator": "^8.0.0"
   },
   "devDependencies": {
     "rollup": "^1.10.0",
@@ -38,8 +39,6 @@
     "rollup-plugin-vue": "^5.0.0",
     "tslint": "^5.15.0",
     "typescript": "^3.4.1",
-    "vue-class-component": "^7.0.1",
-    "vue-property-decorator": "^8.0.0",
     "vue-template-compiler": "^2.6.10"
   }
 }
