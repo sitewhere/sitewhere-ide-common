@@ -1,6 +1,6 @@
 {
   "name": "sitewhere-ide-common",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Common base library used for SiteWhere IDE products",
   "main": "dist/sitewhere-ide-common.common.js",
   "typings": "lib/index.d.ts",
@@ -33,9 +33,8 @@
     "axios": "^0.18.0",
     "moment": "^2.24.0",
     "vue": "^2.6.8",
-    "vue-router": "^3.0.2",
-    "vuex": "^3.1.0",
-    "vue-property-decorator": "^8.0.0"
+    "vue-property-decorator": "^8.0.0",
+    "vue-router": "^3.0.2"
   },
   "devDependencies": {
     "rimraf": "^2.6.3",

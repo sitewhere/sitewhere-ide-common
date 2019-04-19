@@ -1,5 +1,5 @@
 /**
-  * SiteWhere IDE Common Library v0.0.10
+  * SiteWhere IDE Common Library v0.0.11
   * (c) 2019 SiteWhere LLC
   * @license CPAL-1.0
   */
@@ -98,7 +98,7 @@ var ListComponent = /** @class */ (function (_super) {
         throw new Error("Implement buildResponseFormat()");
     };
     /** Return promise for performing search */
-    ListComponent.prototype.performSearch = function (store, criteria, format) {
+    ListComponent.prototype.performSearch = function (criteria, format) {
         throw new Error("Implement performSearch()");
     };
     // Refresh list contents.
@@ -118,7 +118,7 @@ var ListComponent = /** @class */ (function (_super) {
                     case 1:
                         _a.trys.push([1, 3, , 4]);
                         this.loaded = false;
-                        promise = this.performSearch(this.$store, criteria, format);
+                        promise = this.performSearch(criteria, format);
                         return [4 /*yield*/, promise];
                     case 2:
                         response = _a.sent();
@@ -174,7 +174,7 @@ var DetailComponent = /** @class */ (function (_super) {
         this.refresh();
     };
     /** Return promise for loading record */
-    DetailComponent.prototype.loadRecord = function (store, token) {
+    DetailComponent.prototype.loadRecord = function (token) {
         throw new Error("Implement loadRecord()");
     };
     // Refresh list contents.
@@ -186,7 +186,7 @@ var DetailComponent = /** @class */ (function (_super) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
                         this.loaded = false;
-                        promise = this.loadRecord(this.$store, this.token);
+                        promise = this.loadRecord(this.token);
                         return [4 /*yield*/, promise];
                     case 1:
                         response = _a.sent();

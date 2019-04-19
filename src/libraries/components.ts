@@ -2,7 +2,6 @@ import Vue from "vue";
 import moment from "moment";
 import { Component, Prop } from "vue-property-decorator";
 import { IPaging, SiteWhereServerConnectivity } from "./interfaces";
-import { Store } from "vuex";
 import { AxiosResponse } from "axios";
 import { AxiosPromise } from "axios";
 import { Route } from "vue-router";
@@ -48,11 +47,7 @@ export class ListComponent<
   }
 
   /** Return promise for performing search */
-  performSearch(
-    store: Store<SiteWhereServerConnectivity>,
-    criteria: S,
-    format: F
-  ): AxiosPromise<R> {
+  performSearch(criteria: S, format: F): AxiosPromise<R> {
     throw new Error("Implement performSearch()");
   }
 
@@ -67,11 +62,7 @@ export class ListComponent<
 
     try {
       this.loaded = false;
-      let promise: AxiosPromise<R> = this.performSearch(
-        this.$store,
-        criteria,
-        format
-      );
+      let promise: AxiosPromise<R> = this.performSearch(criteria, format);
       let response: AxiosResponse<R> = await promise;
       this.results = response.data;
       this.matches = response.data.results;
@@ -116,10 +107,7 @@ export class DetailComponent<T> extends Vue {
   }
 
   /** Return promise for loading record */
-  loadRecord(
-    store: Store<SiteWhereServerConnectivity>,
-    token: string | null
-  ): AxiosPromise<T> {
+  loadRecord(token: string | null): AxiosPromise<T> {
     throw new Error("Implement loadRecord()");
   }
 
@@ -127,7 +115,7 @@ export class DetailComponent<T> extends Vue {
   async refresh() {
     try {
       this.loaded = false;
-      let promise: AxiosPromise<T> = this.loadRecord(this.$store, this.token);
+      let promise: AxiosPromise<T> = this.loadRecord(this.token);
       let response: AxiosResponse<T> = await promise;
       this.record = response.data;
       this.afterRecordLoaded(this.record);
