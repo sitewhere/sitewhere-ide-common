@@ -1,15 +1,18 @@
 {
   "name": "sitewhere-ide-common",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Common base library used for SiteWhere IDE products",
-  "main": "dist/sitewhere-ide-common.cjs.js",
-  "module": "dist/sitewhere-ide-common.js",
-  "types": "dist/sitewhere-ide-common.d.ts",
+  "main": "dist/sitewhere-ide-common.common.js",
+  "typings": "lib/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "lib"
   ],
   "scripts": {
-    "build": "tsc -p ./src/tsconfig.json && rollup -c"
+    "build": "npm run build:ts && npm run build:main",
+    "build:ts": "tsc -p ./src",
+    "build:main": "node build/build.js",
+    "clean": "rimraf ./lib"
   },
   "repository": {
     "type": "git",
@@ -35,11 +38,14 @@
     "vue-property-decorator": "^8.0.0"
   },
   "devDependencies": {
+    "rimraf": "^2.6.3",
     "rollup": "^1.10.0",
-    "rollup-plugin-typescript2": "^0.20.1",
+    "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-vue": "^5.0.0",
     "tslint": "^5.15.0",
     "typescript": "^3.4.1",
-    "vue-template-compiler": "^2.6.10"
+    "uglify-js": "^3.5.5",
+    "vue-template-compiler": "^2.6.10",
+    "zlib": "^1.0.5"
   }
 }
