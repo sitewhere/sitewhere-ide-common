@@ -1,6 +1,6 @@
 {
   "name": "sitewhere-ide-common",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Common base library used for SiteWhere IDE products",
   "main": "dist/sitewhere-ide-common.common.js",
   "typings": "lib/index.d.ts",
@@ -33,7 +33,6 @@
     "axios": "^0.18.0",
     "moment": "^2.24.0",
     "vue": "^2.6.8",
-    "vue-property-decorator": "^8.1.0",
     "vue-router": "^3.0.2"
   },
   "devDependencies": {
@@ -46,6 +45,7 @@
     "tslint": "^5.15.0",
     "typescript": "^3.4.1",
     "uglify-js": "^3.5.5",
+    "vue-property-decorator": "^8.1.0",
     "vue-template-compiler": "^2.6.10",
     "zlib": "^1.0.5"
   }
