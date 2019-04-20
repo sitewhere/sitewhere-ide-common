@@ -20,6 +20,9 @@ import {
   ISearchResults
 } from "sitewhere-rest-api";
 
+// @ts-ignore: Unused import
+import { Validation } from "vuelidate";
+
 // Re-export from vue-property-decorator.
 export { Vue, Component, Emit, Inject, Mixins, Model, Prop, Provide, Watch };
 
