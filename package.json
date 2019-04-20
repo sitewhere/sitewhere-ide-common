@@ -1,6 +1,6 @@
 {
   "name": "sitewhere-ide-common",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Common base library used for SiteWhere IDE products",
   "main": "dist/sitewhere-ide-common.common.js",
   "typings": "lib/index.d.ts",
@@ -33,9 +33,11 @@
     "axios": "^0.18.0",
     "moment": "^2.24.0",
     "vue": "^2.6.8",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.0.2",
+    "vuelidate": "^0.7.4"
   },
   "devDependencies": {
+    "@types/vuelidate": "^0.7.5",
     "rimraf": "^2.6.3",
     "rollup": "^1.10.0",
     "rollup-plugin-commonjs": "^9.3.4",

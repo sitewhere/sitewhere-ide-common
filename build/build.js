@@ -45,7 +45,7 @@ function genConfig(opts) {
   const config = {
     input: {
       input: resolve("lib/index.js"),
-      external: ["vue", "moment"],
+      external: ["vue", "moment", "vuelidate"],
       plugins: [nodeResolve(), commonjs()]
     },
     output: {
