@@ -1,6 +1,6 @@
 {
   "name": "sitewhere-ide-common",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Common base library used for SiteWhere IDE products",
   "main": "dist/sitewhere-ide-common.common.js",
   "typings": "lib/index.d.ts",

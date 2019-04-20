@@ -20,7 +20,6 @@ import {
   ISearchResults
 } from "sitewhere-rest-api";
 
-// @ts-ignore: Unused import
 import { Validation } from "vuelidate";
 
 // Re-export from vue-property-decorator.
@@ -390,6 +389,8 @@ export class DeleteDialogComponent<T> extends Vue {
  */
 @Component
 export class DialogSection extends Vue {
+  $v: Validation | any;
+
   /** Called on component create */
   created(): void {
     this.reset();
