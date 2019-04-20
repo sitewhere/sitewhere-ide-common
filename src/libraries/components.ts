@@ -1,7 +1,7 @@
 import Vue from "vue";
 import moment from "moment";
 import { Component, Prop } from "vue-property-decorator";
-import { IPaging, SiteWhereServerConnectivity } from "./interfaces";
+import { IPaging } from "./interfaces";
 import { AxiosResponse } from "axios";
 import { AxiosPromise } from "axios";
 import { Route } from "vue-router";
@@ -13,6 +13,9 @@ import {
 
 // @ts-ignore: Unused import
 import { Validation } from "vuelidate";
+
+// Re-export everything from vue-property-decorator.
+export * from "vue-property-decorator";
 
 /**
  * Base class for components that display lists based on

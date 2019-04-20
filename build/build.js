@@ -7,6 +7,8 @@ const zlib = require("zlib");
 const uglify = require("uglify-js");
 const rollup = require("rollup");
 const replace = require("rollup-plugin-replace");
+const nodeResolve = require("rollup-plugin-node-resolve");
+const commonjs = require("rollup-plugin-commonjs");
 const version = process.env.VERSION || require("../package.json").version;
 const banner = `/**
   * SiteWhere IDE Common Library v${version}
@@ -43,8 +45,8 @@ function genConfig(opts) {
   const config = {
     input: {
       input: resolve("lib/index.js"),
-      external: ["vue", "moment", "vue-property-decorator"],
-      plugins: []
+      external: ["vue", "moment"],
+      plugins: [nodeResolve(), commonjs()]
     },
     output: {
       file: opts.file,
@@ -53,7 +55,8 @@ function genConfig(opts) {
       name: "SiteWhereIdeCommon",
       exports: "named",
       globals: {
-        vue: "Vue"
+        vue: "Vue",
+        moment: "moment"
       }
     }
   };
