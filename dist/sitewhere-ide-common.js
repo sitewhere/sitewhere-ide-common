@@ -1,5 +1,5 @@
 /**
-  * SiteWhere IDE Common Library v0.0.15
+  * SiteWhere IDE Common Library v0.0.16
   * (c) 2019 SiteWhere LLC
   * @license CPAL-1.0
   */
@@ -1022,7 +1022,6 @@
 	    return moment(date).format("YYYY-MM-DD H:mm:ss");
 	}
 
-	exports.Vue = Vue;
 	exports.Component = Component;
 	exports.CreateDialogComponent = CreateDialogComponent;
 	exports.DeleteDialogComponent = DeleteDialogComponent;

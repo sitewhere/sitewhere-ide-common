@@ -1,6 +1,15 @@
 import Vue from "vue";
 import moment from "moment";
-import { Component, Prop } from "vue-property-decorator";
+import {
+  Component,
+  Emit,
+  Inject,
+  Mixins,
+  Model,
+  Prop,
+  Provide,
+  Watch
+} from "vue-property-decorator";
 import { IPaging } from "./interfaces";
 import { AxiosResponse } from "axios";
 import { AxiosPromise } from "axios";
@@ -14,8 +23,8 @@ import {
 // @ts-ignore: Unused import
 import { Validation } from "vuelidate";
 
-// Re-export everything from vue-property-decorator.
-export * from "vue-property-decorator";
+// Re-export from vue-property-decorator.
+export { Component, Emit, Inject, Mixins, Model, Prop, Provide, Watch };
 
 /**
  * Base class for components that display lists based on
