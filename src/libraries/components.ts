@@ -220,18 +220,27 @@ export class CreateDialogComponent<T, R> extends Vue {
   }
 
   /** Implemented in subclasses to save payload */
-  save(payload: R): AxiosPromise<T> {
+  save(payload: R): AxiosPromise<T> | T {
     throw new Error("Create dialog must implement save().");
   }
 
   /** Implemented in subclasses for after-save */
   afterSave(payload: T): void {}
 
+  /** Type guard to differentiate between responses */
+  isAxiosResponse(
+    response: AxiosResponse<T> | T
+  ): response is AxiosResponse<T> {
+    return (<AxiosResponse<T>>response).data !== undefined;
+  }
+
   /** Handle payload commit */
   async commit(payload: R) {
     try {
-      let response: AxiosResponse<T> = await this.save(payload);
-      let created: T = response.data;
+      let response: AxiosResponse<T> | T = await this.save(payload);
+      let created: T = this.isAxiosResponse(response)
+        ? response.data
+        : response;
       this.afterSave(created);
       this.$emit("created", created);
       this.getDialog().closeDialog();
@@ -257,8 +266,15 @@ export class EditDialogComponent<T, R> extends Vue {
    * Prepare load for the given identifier.
    * @param identifier
    */
-  prepareLoad(identifier: string): AxiosPromise<T> {
+  prepareLoad(identifier: string): AxiosPromise<T> | T {
     throw new Error("Edit dialog must implement load().");
+  }
+
+  /** Type guard to differentiate between responses */
+  isAxiosResponse(
+    response: AxiosResponse<T> | T
+  ): response is AxiosResponse<T> {
+    return (<AxiosResponse<T>>response).data !== undefined;
   }
 
   /**
@@ -273,8 +289,8 @@ export class EditDialogComponent<T, R> extends Vue {
     this.getDialog().reset();
     this.loaded = false;
     try {
-      let response: AxiosResponse<T> = await this.prepareLoad(identifier);
-      this.record = response.data;
+      let response: AxiosResponse<T> | T = await this.prepareLoad(identifier);
+      this.record = this.isAxiosResponse(response) ? response.data : response;
       this.getDialog().load(this.record);
     } catch (err) {
       handleError(err);
@@ -283,7 +299,7 @@ export class EditDialogComponent<T, R> extends Vue {
   }
 
   /** Implemented in subclasses to save payload */
-  prepareSave(original: T, updated: R): AxiosPromise<T> {
+  prepareSave(original: T, updated: R): AxiosPromise<T> | T {
     throw new Error("Edit dialog must implement save().");
   }
 
@@ -293,11 +309,13 @@ export class EditDialogComponent<T, R> extends Vue {
       throw new Error("Unable to update. Record is null.");
     }
     try {
-      let response: AxiosResponse<T> = await this.prepareSave(
+      let response: AxiosResponse<T> | T = await this.prepareSave(
         this.record,
         payload
       );
-      let updated: T = response.data;
+      let updated: T = this.isAxiosResponse(response)
+        ? response.data
+        : response;
       this.afterSave(updated);
       this.$emit("updated", updated);
       this.getDialog().closeDialog();
@@ -326,8 +344,15 @@ export class DeleteDialogComponent<T> extends Vue {
    * Load object to be deleted.
    * @param identifier
    */
-  prepareLoad(identifier: string): AxiosPromise<T> {
+  prepareLoad(identifier: string): AxiosPromise<T> | T {
     throw new Error("Load not implemented in dialog.");
+  }
+
+  /** Type guard to differentiate between responses */
+  isAxiosResponse(
+    response: AxiosResponse<T> | T
+  ): response is AxiosResponse<T> {
+    return (<AxiosResponse<T>>response).data !== undefined;
   }
 
   /** Called after record is loaded */
@@ -339,8 +364,8 @@ export class DeleteDialogComponent<T> extends Vue {
    */
   async open(identifier: string) {
     try {
-      let response: AxiosResponse<T> = await this.prepareLoad(identifier);
-      this.record = response.data;
+      let response: AxiosResponse<T> | T = await this.prepareLoad(identifier);
+      this.record = this.isAxiosResponse(response) ? response.data : response;
       this.visible = true;
       this.afterLoad(this.record);
     } catch (err) {
@@ -349,7 +374,7 @@ export class DeleteDialogComponent<T> extends Vue {
   }
 
   /** Return method to delete record */
-  prepareDelete(record: T): AxiosPromise<T> {
+  prepareDelete(record: T): AxiosPromise<T> | T {
     throw new Error("Delete not implemented in dialog.");
   }
 
@@ -359,8 +384,10 @@ export class DeleteDialogComponent<T> extends Vue {
       throw new Error("Unable to delete. Record is null.");
     }
     try {
-      let response: AxiosResponse<T> = await this.prepareDelete(this.record);
-      this.record = response.data;
+      let response: AxiosResponse<T> | T = await this.prepareDelete(
+        this.record
+      );
+      this.record = this.isAxiosResponse(response) ? response.data : response;
       this.$emit("deleted", this.record);
       this.closeDialog();
     } catch (err) {

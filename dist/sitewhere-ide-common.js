@@ -1,5 +1,5 @@
 /**
-  * SiteWhere IDE Common Library v0.0.21
+  * SiteWhere IDE Common Library v0.0.22
   * (c) 2019 SiteWhere LLC
   * @license CPAL-1.0
   */
@@ -744,6 +744,10 @@
 	    };
 	    /** Implemented in subclasses for after-save */
 	    CreateDialogComponent.prototype.afterSave = function (payload) { };
+	    /** Type guard to differentiate between responses */
+	    CreateDialogComponent.prototype.isAxiosResponse = function (response) {
+	        return response.data !== undefined;
+	    };
 	    /** Handle payload commit */
 	    CreateDialogComponent.prototype.commit = function (payload) {
 	        return __awaiter(this, void 0, void 0, function () {
@@ -755,7 +759,9 @@
 	                        return [4 /*yield*/, this.save(payload)];
 	                    case 1:
 	                        response = _a.sent();
-	                        created = response.data;
+	                        created = this.isAxiosResponse(response)
+	                            ? response.data
+	                            : response;
 	                        this.afterSave(created);
 	                        this.$emit("created", created);
 	                        this.getDialog().closeDialog();
@@ -793,6 +799,10 @@
 	    EditDialogComponent.prototype.prepareLoad = function (identifier) {
 	        throw new Error("Edit dialog must implement load().");
 	    };
+	    /** Type guard to differentiate between responses */
+	    EditDialogComponent.prototype.isAxiosResponse = function (response) {
+	        return response.data !== undefined;
+	    };
 	    /**
 	     * Load record for identifer and open dialog.
 	     * @param identifier
@@ -815,7 +825,7 @@
 	                        return [4 /*yield*/, this.prepareLoad(identifier)];
 	                    case 2:
 	                        response = _a.sent();
-	                        this.record = response.data;
+	                        this.record = this.isAxiosResponse(response) ? response.data : response;
 	                        this.getDialog().load(this.record);
 	                        return [3 /*break*/, 4];
 	                    case 3:
@@ -849,7 +859,9 @@
 	                        return [4 /*yield*/, this.prepareSave(this.record, payload)];
 	                    case 2:
 	                        response = _a.sent();
-	                        updated = response.data;
+	                        updated = this.isAxiosResponse(response)
+	                            ? response.data
+	                            : response;
 	                        this.afterSave(updated);
 	                        this.$emit("updated", updated);
 	                        this.getDialog().closeDialog();
@@ -886,6 +898,10 @@
 	    DeleteDialogComponent.prototype.prepareLoad = function (identifier) {
 	        throw new Error("Load not implemented in dialog.");
 	    };
+	    /** Type guard to differentiate between responses */
+	    DeleteDialogComponent.prototype.isAxiosResponse = function (response) {
+	        return response.data !== undefined;
+	    };
 	    /** Called after record is loaded */
 	    DeleteDialogComponent.prototype.afterLoad = function (record) { };
 	    /**
@@ -902,7 +918,7 @@
 	                        return [4 /*yield*/, this.prepareLoad(identifier)];
 	                    case 1:
 	                        response = _a.sent();
-	                        this.record = response.data;
+	                        this.record = this.isAxiosResponse(response) ? response.data : response;
 	                        this.visible = true;
 	                        this.afterLoad(this.record);
 	                        return [3 /*break*/, 3];
@@ -935,7 +951,7 @@
 	                        return [4 /*yield*/, this.prepareDelete(this.record)];
 	                    case 2:
 	                        response = _a.sent();
-	                        this.record = response.data;
+	                        this.record = this.isAxiosResponse(response) ? response.data : response;
 	                        this.$emit("deleted", this.record);
 	                        this.closeDialog();
 	                        return [3 /*break*/, 4];
