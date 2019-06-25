@@ -1,5 +1,5 @@
 /**
-  * SiteWhere IDE Common Library v0.0.22
+  * SiteWhere IDE Common Library v0.0.23
   * (c) 2019 SiteWhere LLC
   * @license CPAL-1.0
   */
@@ -813,9 +813,6 @@
 	            return __generator(this, function (_a) {
 	                switch (_a.label) {
 	                    case 0:
-	                        if (!identifier) {
-	                            throw new Error("Identifier must be passed for edit.");
-	                        }
 	                        this.getDialog().openDialog();
 	                        this.getDialog().reset();
 	                        this.loaded = false;

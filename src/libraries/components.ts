@@ -266,7 +266,7 @@ export class EditDialogComponent<T, R> extends Vue {
    * Prepare load for the given identifier.
    * @param identifier
    */
-  prepareLoad(identifier: string): AxiosPromise<T> | T {
+  prepareLoad(identifier: string | null): AxiosPromise<T> | T {
     throw new Error("Edit dialog must implement load().");
   }
 
@@ -281,10 +281,7 @@ export class EditDialogComponent<T, R> extends Vue {
    * Load record for identifer and open dialog.
    * @param identifier
    */
-  async open(identifier: string) {
-    if (!identifier) {
-      throw new Error("Identifier must be passed for edit.");
-    }
+  async open(identifier: string | null) {
     this.getDialog().openDialog();
     this.getDialog().reset();
     this.loaded = false;
