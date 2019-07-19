@@ -64,5 +64,5 @@ export type ITableHeaders = {
  * Common interface for interacting with tabbed components.
  */
 export interface ITabbedComponent {
-  setActiveTab(tab: string): void;
+  setActiveTab(tab: number): void;
 }
