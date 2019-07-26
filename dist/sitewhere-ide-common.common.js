@@ -1,5 +1,5 @@
 /**
-  * SiteWhere IDE Common Library v0.0.24
+  * SiteWhere IDE Common Library v0.0.25
   * (c) 2019 SiteWhere LLC
   * @license CPAL-1.0
   */
@@ -737,6 +737,12 @@ var CreateDialogComponent = /** @class */ (function (_super) {
     /** Open wrapped dialog */
     CreateDialogComponent.prototype.open = function () {
         this.getDialog().reset();
+        this.getDialog().openDialog();
+    };
+    /** Load dialog then open it */
+    CreateDialogComponent.prototype.loadAndOpen = function (payload) {
+        this.getDialog().reset();
+        this.getDialog().load(payload);
         this.getDialog().openDialog();
     };
     /** Implemented in subclasses to save payload */

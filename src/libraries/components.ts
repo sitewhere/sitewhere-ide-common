@@ -219,6 +219,13 @@ export class CreateDialogComponent<T, R> extends Vue {
     this.getDialog().openDialog();
   }
 
+  /** Load dialog then open it */
+  loadAndOpen(payload: T) {
+    this.getDialog().reset();
+    this.getDialog().load(payload);
+    this.getDialog().openDialog();
+  }
+
   /** Implemented in subclasses to save payload */
   save(payload: R): AxiosPromise<T> | T {
     throw new Error("Create dialog must implement save().");
