@@ -1,5 +1,5 @@
 /**
-  * SiteWhere IDE Common Library v0.0.25
+  * SiteWhere IDE Common Library v2.1.0
   * (c) 2019 SiteWhere LLC
   * @license CPAL-1.0
   */
