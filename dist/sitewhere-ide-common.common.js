@@ -13,6 +13,197 @@ var Vue = _interopDefault(require('vue'));
 var moment = _interopDefault(require('moment'));
 
 /**
+ * Common error handler.
+ * @param err
+ */
+function handleError(err) {
+    console.log(err);
+}
+/**
+ * Show informational message in snackbar.
+ * @param component
+ * @param message
+ */
+function showMessage(component, message) {
+    var alert = {
+        message: message,
+        type: "info"
+    };
+    component.$store.commit("message", alert);
+    return alert;
+}
+/**
+ * Show error message in snackbar.
+ * @param component
+ * @param message
+ */
+function showError(component, message) {
+    var alert = {
+        message: message,
+        type: "error"
+    };
+    component.$store.commit("message", alert);
+    return alert;
+}
+/**
+ * Format date in YYYY-MM-DD H:mm:ss format. N/A for null.
+ * @param date
+ */
+function formatDate(date) {
+    if (!date) {
+        return "N/A";
+    }
+    return moment(date).format("YYYY-MM-DD H:mm:ss");
+}
+/**
+ * Format date in YYYY-MM-DD H:mm:ss format.
+ * @param date
+ */
+function formatIso8601(date) {
+    if (!date) {
+        return null;
+    }
+    return moment(date).toISOString();
+}
+/**
+ * Parse date in YYYY-MM-DD H:mm:ss format.
+ * @param value
+ */
+function parseIso8601(value) {
+    if (!value) {
+        return null;
+    }
+    return moment(value).toDate();
+}
+/**
+ * Tests whether a string is blank.
+ * @param str
+ */
+function isBlank(str) {
+    return !str || /^\s*$/.test(str);
+}
+/**
+ * Short string with ellipsis if necessary.
+ * @param val
+ * @param max
+ */
+function ellipsis(val, max) {
+    return val.length > max ? val.substring(0, max) + "..." : val;
+}
+/**
+ * Rounds to four decimal places
+ * @param val
+ */
+function fourDecimalPlaces(val) {
+    return Number(Math.round(parseFloat(val + "e4")) + "e-4").toFixed(4);
+}
+/**
+ * Converts metadata object into array.
+ * @param meta
+ */
+function metadataToArray(meta) {
+    var flat = [];
+    if (meta) {
+        for (var key in meta) {
+            if (meta.hasOwnProperty(key)) {
+                flat.push({ name: key, value: meta[key] });
+            }
+        }
+    }
+    return flat;
+}
+/**
+ * Converts array to metadata object.
+ * @param arrayMeta
+ */
+function arrayToMetadata(arrayMeta) {
+    var metadata = {};
+    if (arrayMeta) {
+        for (var i = 0; i < arrayMeta.length; i++) {
+            metadata[arrayMeta[i].name] = arrayMeta[i].value;
+        }
+    }
+    return metadata;
+}
+/**
+ * Indicates if logged-in user is authorized for all auths in list.
+ * @param component
+ * @param list
+ */
+function isAuthForAll(component, list) {
+    var user = component.$store.getters.user;
+    if (!user) {
+        console.log("No user for permissions check.");
+        return false;
+    }
+    return list.every(function (auth) { return user.authorities.indexOf(auth) > -1; });
+}
+/**
+ * Routes to a applicaton-relative URL.
+ * @param component
+ * @param url
+ */
+function routeTo(component, url) {
+    var tenant = component.$store.getters.selectedTenant;
+    if (tenant) {
+        var route = "/tenants/" + tenant.token + url;
+        console.log("route to", route);
+        component.$router.push(route);
+    }
+    else {
+        console.log("tenant was not set");
+    }
+}
+/**
+ * Routes to device page for hardware id.
+ * @param component
+ * @param token
+ */
+function routeToDevice(component, token) {
+    routeTo(component, "/devices/" + token);
+}
+/**
+ * Returns paging value for all results.
+ */
+function pagingForAllResults() {
+    return "page=1&pageSize=0";
+}
+/** Generate a unique id */
+function generateUniqueId() {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+        var r = crypto.getRandomValues(new Uint8Array(1))[0] % 16 | 0;
+        var v = c === "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+    });
+}
+/** Type guard to differentiate between responses */
+function isAxiosResponse(response) {
+    return response.data !== undefined;
+}
+/**
+ * Move an element in an array from one index to another.
+ * @param arr
+ * @param old_index
+ * @param new_index
+ */
+function arrayMove(arr, old_index, new_index) {
+    while (old_index < 0) {
+        old_index += arr.length;
+    }
+    while (new_index < 0) {
+        new_index += arr.length;
+    }
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length;
+        while (k-- + 1) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr;
+}
+
+/**
   * vue-class-component v7.2.3
   * (c) 2015-present Evan You
   * @license MIT
@@ -1085,23 +1276,6 @@ var DialogSection = /** @class */ (function (_super) {
     ], DialogSection);
     return DialogSection;
 }(Vue));
-/**
- * Common error handler.
- * @param err
- */
-function handleError(err) {
-    console.log(err);
-}
-/**
- * Format date in YYYY-MM-DD H:mm:ss format. N/A for null.
- * @param date
- */
-function formatDate(date) {
-    if (!date) {
-        return "N/A";
-    }
-    return moment(date).format("YYYY-MM-DD H:mm:ss");
-}
 
 exports.Vue = Vue;
 exports.Component = Component;
@@ -1120,5 +1294,21 @@ exports.Model = Model;
 exports.Prop = Prop;
 exports.Provide = Provide;
 exports.Watch = Watch;
+exports.arrayMove = arrayMove;
+exports.arrayToMetadata = arrayToMetadata;
+exports.ellipsis = ellipsis;
 exports.formatDate = formatDate;
+exports.formatIso8601 = formatIso8601;
+exports.fourDecimalPlaces = fourDecimalPlaces;
+exports.generateUniqueId = generateUniqueId;
 exports.handleError = handleError;
+exports.isAuthForAll = isAuthForAll;
+exports.isAxiosResponse = isAxiosResponse;
+exports.isBlank = isBlank;
+exports.metadataToArray = metadataToArray;
+exports.pagingForAllResults = pagingForAllResults;
+exports.parseIso8601 = parseIso8601;
+exports.routeTo = routeTo;
+exports.routeToDevice = routeToDevice;
+exports.showError = showError;
+exports.showMessage = showMessage;

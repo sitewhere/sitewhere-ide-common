@@ -1,5 +1,5 @@
 import Vue from "vue";
-import moment from "moment";
+import { handleError, formatDate } from "../libraries/utils";
 import {
   Component,
   Emit,
@@ -444,23 +444,4 @@ export class DialogSection extends Vue {
   save(): {} {
     return {};
   }
-}
-
-/**
- * Common error handler.
- * @param err
- */
-export function handleError(err: Error): void {
-  console.log(err);
-}
-
-/**
- * Format date in YYYY-MM-DD H:mm:ss format. N/A for null.
- * @param date
- */
-export function formatDate(date: Date) {
-  if (!date) {
-    return "N/A";
-  }
-  return moment(date).format("YYYY-MM-DD H:mm:ss");
 }
