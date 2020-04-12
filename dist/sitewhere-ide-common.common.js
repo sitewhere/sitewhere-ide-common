@@ -19,6 +19,10 @@ var moment = _interopDefault(require('moment'));
 function handleError(err) {
     console.log(err);
 }
+/** Get error response info */
+function errorResponse(error) {
+    return error.response;
+}
 /**
  * Show informational message in snackbar.
  * @param component
@@ -37,9 +41,10 @@ function showMessage(component, message) {
  * @param component
  * @param message
  */
-function showError(component, message) {
+function showError(component, error) {
+    var response = errorResponse(error);
     var alert = {
-        message: message,
+        message: response && response.data ? response.data.message : "Unknown error.",
         type: "error"
     };
     component.$store.commit("message", alert);
@@ -1027,7 +1032,7 @@ var CreateDialogComponent = /** @class */ (function (_super) {
                         return [3 /*break*/, 3];
                     case 2:
                         err_3 = _a.sent();
-                        handleError(err_3);
+                        showError(this, err_3);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }

@@ -1,4 +1,13 @@
 /**
+ * Error structure returned from HTTP requests.
+ */
+export interface IApplicationError {
+  message: string;
+  errorCode: number;
+  errorDescription: string;
+}
+
+/**
  * Message that captures an alert (error or informational)
  */
 export interface IAlertMessage {

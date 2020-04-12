@@ -1,5 +1,10 @@
 import Vue from "vue";
-import { handleError, formatDate } from "../libraries/utils";
+import {
+  handleError,
+  showError,
+  formatDate,
+  VueWithStore
+} from "../libraries/utils";
 import {
   Component,
   Emit,
@@ -252,7 +257,7 @@ export class CreateDialogComponent<T, R> extends Vue {
       this.$emit("created", created);
       this.getDialog().closeDialog();
     } catch (err) {
-      handleError(err);
+      showError(this as any, err);
     }
   }
 }

@@ -1,5 +1,8 @@
 import moment from "moment";
-import { IAlertMessage } from "../libraries/application-model";
+import {
+  IApplicationError,
+  IAlertMessage
+} from "../libraries/application-model";
 import { AxiosResponse } from "axios";
 import Vue from "vue";
 
@@ -12,6 +15,11 @@ export type VueWithStore = Vue & { $store: any };
  */
 export function handleError(err: Error): void {
   console.log(err);
+}
+
+/** Get error response info */
+function errorResponse(error: Error): { data: IApplicationError } {
+  return (error as any).response;
 }
 
 /**
@@ -38,10 +46,12 @@ export function showMessage(
  */
 export function showError(
   component: VueWithStore,
-  message: string
+  error: Error
 ): IAlertMessage {
+  let response: { data: IApplicationError } = errorResponse(error);
   let alert: IAlertMessage = {
-    message: message,
+    message:
+      response && response.data ? response.data.message : "Unknown error.",
     type: "error"
   };
   component.$store.commit("message", alert);
