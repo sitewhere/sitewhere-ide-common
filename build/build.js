@@ -12,7 +12,7 @@ const commonjs = require("rollup-plugin-commonjs");
 const version = process.env.VERSION || require("../package.json").version;
 const banner = `/**
   * SiteWhere IDE Common Library v${version}
-  * (c) 2019 SiteWhere LLC
+  * (c) 2020 SiteWhere LLC
   * @license CPAL-1.0
   */`;
 
@@ -45,7 +45,7 @@ function genConfig(opts) {
   const config = {
     input: {
       input: resolve("lib/index.js"),
-      external: ["vue", "moment", "vuelidate"],
+      external: ["sitewhere-rest-api", "axios", "vue", "moment", "vuelidate"],
       plugins: [nodeResolve(), commonjs()]
     },
     output: {
@@ -56,7 +56,8 @@ function genConfig(opts) {
       exports: "named",
       globals: {
         vue: "Vue",
-        moment: "moment"
+        moment: "moment",
+        "sitewhere-rest-api": "SiteWhere"
       }
     }
   };
@@ -113,9 +114,9 @@ function write(dest, code, zip) {
     function report(extra) {
       console.log(
         blue(path.relative(process.cwd(), dest)) +
-          " " +
-          getSize(code) +
-          (extra || "")
+        " " +
+        getSize(code) +
+        (extra || "")
       );
       resolve();
     }
