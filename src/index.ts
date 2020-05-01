@@ -25,8 +25,3 @@ export * from "./rest/sitewhere-scripting-api";
 export * from "./rest/sitewhere-tenants-api";
 export * from "./rest/sitewhere-users-api";
 export * from "./rest/sitewhere-zones-api";
-
-function SiteWhereIdeCommon(Vue: VueConstructor): void {
-}
-
-export default SiteWhereIdeCommon;

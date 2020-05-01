@@ -1803,9 +1803,6 @@ function deleteZone(store, token) {
     return loaderWrapper(store, api);
 }
 
-function SiteWhereIdeCommon(Vue) {
-}
-
 exports.activateTenantScript = activateTenantScript;
 exports.arrayMove = arrayMove;
 exports.arrayToMetadata = arrayToMetadata;
@@ -1840,7 +1837,6 @@ exports.createTenant = createTenant;
 exports.createTenantScript = createTenantScript;
 exports.createUser = createUser;
 exports.createZone = createZone;
-exports.default = SiteWhereIdeCommon;
 exports.deleteArea = deleteArea;
 exports.deleteAreaType = deleteAreaType;
 exports.deleteAsset = deleteAsset;

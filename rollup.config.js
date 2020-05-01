@@ -16,17 +16,14 @@ export default [
       format: "es",
       exports: "named",
       globals: {
-        axios: "axios"
+        axios: "axios",
+        moment: "moment"
       }
     }],
     external: [
       "axios",
       "moment",
-      "sitewhere-rest-api",
-      "vue",
-      "vue-router",
-      "vuelidate",
-      "vuex"
+      "sitewhere-rest-api"
     ],
     plugins: [typescript()]
   }

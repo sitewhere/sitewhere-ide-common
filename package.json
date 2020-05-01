@@ -1,6 +1,6 @@
 {
   "name": "sitewhere-ide-common",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "Common base library used for SiteWhere IDE products",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -28,18 +28,18 @@
   },
   "homepage": "https://github.com/sitewhere/sitewhere-ide-common#readme",
   "dependencies": {
-    "axios": "^0.18.1",
-    "moment": "^2.24.0",
-    "vue": "^2.6.11",
-    "vue-router": "^3.1.6",
-    "vuelidate": "^0.7.5",
-    "vuex": "^3.1.1"
+    "axios": "^0.19.2",
+    "moment": "^2.25.1",
+    "sitewhere-rest-api": "^3.0.0-alpha.2"
   },
   "devDependencies": {
+    "@types/node": "^13.13.4",
     "@types/vuelidate": "^0.7.11",
-    "rollup": "^1.16.7",
-    "rollup-plugin-typescript2": "^0.22.0",
-    "tslint": "^5.18.0",
-    "typescript": "^3.5.3"
+    "rollup": "^2.7.6",
+    "rollup-plugin-typescript2": "^0.27.0",
+    "tslint": "^6.1.2",
+    "typescript": "^3.5.3",
+    "vue": "^2.6.11",
+    "vuex": "^3.3.0"
   }
 }
