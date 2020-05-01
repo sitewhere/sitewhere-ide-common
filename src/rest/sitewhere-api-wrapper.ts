@@ -1,7 +1,7 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { Auth, AuthAPI } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { IRemotes, IAlertMessage } from "../libraries/application-model";
-import { INavigationSection } from "../libraries/interfaces";
+import { INavigationSection } from "../libraries/application-model";
 import { IUser, ITenant } from "sitewhere-rest-api";
 import { Store } from "vuex";
 
@@ -69,7 +69,7 @@ export function createCoreApiCall(
   var tenantAuth = store.getters.selectedTenant
     ? store.getters.selectedTenant.authenticationToken
     : "";
-  return SiteWhere.Auth.createJwtRequest(baseUrl, jwt, tenantId, tenantAuth);
+  return Auth.createJwtRequest(baseUrl, jwt, tenantId, tenantAuth);
 }
 
 /**
@@ -81,7 +81,7 @@ export function createAuthApiCall(
 ): AxiosInstance {
   var baseUrl = createAuthApiUrl(store);
   var authToken = store.getters.authToken;
-  return SiteWhere.Auth.createBasicAuthRequest(baseUrl, authToken);
+  return Auth.createBasicAuthRequest(baseUrl, authToken);
 }
 
 /**
@@ -131,6 +131,6 @@ export function getJwt(
   store: Store<ISiteWhereUIState>
 ): Promise<AxiosResponse<any>> {
   let axios: AxiosInstance = createAuthApiCall(store);
-  let api = SiteWhere.AuthAPI.Jwt.getJwt(axios);
+  let api = AuthAPI.Jwt.getJwt(axios);
   return loaderWrapper(store, api);
 }

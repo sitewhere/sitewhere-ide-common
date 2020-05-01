@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -23,7 +23,7 @@ export function listDeviceCommands(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceCommandSearchResults
-  > = SiteWhere.API.DeviceCommands.listDeviceCommands(axios, criteria, format);
+  > = API.DeviceCommands.listDeviceCommands(axios, criteria, format);
   return loaderWrapper(store, api);
 }
 
@@ -41,7 +41,7 @@ export function listDeviceCommandsByNamespace(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceCommandNamespaceSearchResults
-  > = SiteWhere.API.DeviceCommands.listDeviceCommandsForNamespace(
+  > = API.DeviceCommands.listDeviceCommandsForNamespace(
     axios,
     criteria,
     format

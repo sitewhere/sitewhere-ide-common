@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -22,7 +22,7 @@ export function createTenant(
   request: ITenantCreateRequest
 ): Promise<AxiosResponse<ITenant>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ITenant> = SiteWhere.API.Tenants.createTenant(
+  let api: AxiosPromise<ITenant> = API.Tenants.createTenant(
     axios,
     request
   );
@@ -41,7 +41,7 @@ export function getTenant(
   format: ITenantResponseFormat
 ): Promise<AxiosResponse<ITenant>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ITenant> = SiteWhere.API.Tenants.getTenant(
+  let api: AxiosPromise<ITenant> = API.Tenants.getTenant(
     axios,
     token,
     format
@@ -61,7 +61,7 @@ export function updateTenant(
   request: ITenantCreateRequest
 ): Promise<AxiosResponse<ITenant>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ITenant> = SiteWhere.API.Tenants.updateTenant(
+  let api: AxiosPromise<ITenant> = API.Tenants.updateTenant(
     axios,
     token,
     request
@@ -81,7 +81,7 @@ export function listTenants(
   format: ITenantResponseFormat
 ): Promise<AxiosResponse<ITenantSearchResults>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ITenantSearchResults> = SiteWhere.API.Tenants.listTenants(
+  let api: AxiosPromise<ITenantSearchResults> = API.Tenants.listTenants(
     axios,
     criteria,
     format
@@ -99,7 +99,7 @@ export function deleteTenant(
   token: string
 ): Promise<AxiosResponse<ITenant>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ITenant> = SiteWhere.API.Tenants.deleteTenant(
+  let api: AxiosPromise<ITenant> = API.Tenants.deleteTenant(
     axios,
     token
   );
@@ -114,7 +114,7 @@ export function listTenantConfigurationTemplates(
   store: Store<ISiteWhereUIState>
 ): Promise<AxiosResponse<ITenantConfigurationTemplate[]>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ITenantConfigurationTemplate[]> = SiteWhere.API.Tenants.listTenantConfigurationTemplates(
+  let api: AxiosPromise<ITenantConfigurationTemplate[]> = API.Tenants.listTenantConfigurationTemplates(
     axios
   );
   return loaderWrapper(store, api);
@@ -128,7 +128,7 @@ export function listTenantDatasetTemplates(
   store: Store<ISiteWhereUIState>
 ): Promise<AxiosResponse<ITenantDatasetTemplate[]>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ITenantDatasetTemplate[]> = SiteWhere.API.Tenants.listTenantDatasetTemplates(
+  let api: AxiosPromise<ITenantDatasetTemplate[]> = API.Tenants.listTenantDatasetTemplates(
     axios
   );
   return loaderWrapper(store, api);

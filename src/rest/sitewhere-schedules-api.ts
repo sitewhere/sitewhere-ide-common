@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -20,7 +20,7 @@ export function createSchedule(
   request: IScheduleCreateRequest
 ): Promise<AxiosResponse<ISchedule>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ISchedule> = SiteWhere.API.Schedules.createSchedule(
+  let api: AxiosPromise<ISchedule> = API.Schedules.createSchedule(
     axios,
     request
   );
@@ -39,7 +39,7 @@ export function getSchedule(
   format: IScheduleResponseFormat
 ): Promise<AxiosResponse<ISchedule>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ISchedule> = SiteWhere.API.Schedules.getSchedule(
+  let api: AxiosPromise<ISchedule> = API.Schedules.getSchedule(
     axios,
     token,
     format
@@ -59,7 +59,7 @@ export function updateSchedule(
   request: IScheduleCreateRequest
 ): Promise<AxiosResponse<ISchedule>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ISchedule> = SiteWhere.API.Schedules.updateSchedule(
+  let api: AxiosPromise<ISchedule> = API.Schedules.updateSchedule(
     axios,
     token,
     request
@@ -77,7 +77,7 @@ export function deleteSchedule(
   token: string
 ): Promise<AxiosResponse<ISchedule>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ISchedule> = SiteWhere.API.Schedules.deleteSchedule(
+  let api: AxiosPromise<ISchedule> = API.Schedules.deleteSchedule(
     axios,
     token
   );
@@ -98,6 +98,6 @@ export function listSchedules(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IScheduleSearchResults
-  > = SiteWhere.API.Schedules.listSchedules(axios, criteria, format);
+  > = API.Schedules.listSchedules(axios, criteria, format);
   return loaderWrapper(store, api);
 }

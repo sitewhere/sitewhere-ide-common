@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -22,6 +22,6 @@ export function listDeviceStatuses(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceStatusSearchResults
-  > = SiteWhere.API.DeviceStatuses.listDeviceStatuses(axios, criteria, format);
+  > = API.DeviceStatuses.listDeviceStatuses(axios, criteria, format);
   return loaderWrapper(store, api);
 }

@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -20,7 +20,7 @@ export function createZone(
   request: IZoneCreateRequest
 ): Promise<AxiosResponse<IZone>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IZone> = SiteWhere.API.Zones.createZone(axios, request);
+  let api: AxiosPromise<IZone> = API.Zones.createZone(axios, request);
   return loaderWrapper(store, api);
 }
 
@@ -34,7 +34,7 @@ export function getZone(
   token: string
 ): Promise<AxiosResponse<IZone>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IZone> = SiteWhere.API.Zones.getZone(axios, token);
+  let api: AxiosPromise<IZone> = API.Zones.getZone(axios, token);
   return loaderWrapper(store, api);
 }
 
@@ -50,7 +50,7 @@ export function updateZone(
   request: IZoneCreateRequest
 ): Promise<AxiosResponse<IZone>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IZone> = SiteWhere.API.Zones.updateZone(
+  let api: AxiosPromise<IZone> = API.Zones.updateZone(
     axios,
     token,
     request
@@ -70,7 +70,7 @@ export function listZones(
   format: IZoneResponseFormat
 ): Promise<AxiosResponse<IZoneSearchResults>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IZoneSearchResults> = SiteWhere.API.Zones.listZones(
+  let api: AxiosPromise<IZoneSearchResults> = API.Zones.listZones(
     axios,
     criteria,
     format
@@ -88,6 +88,6 @@ export function deleteZone(
   token: string
 ): Promise<AxiosResponse<IZone>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IZone> = SiteWhere.API.Zones.deleteZone(axios, token);
+  let api: AxiosPromise<IZone> = API.Zones.deleteZone(axios, token);
   return loaderWrapper(store, api);
 }

@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -22,7 +22,7 @@ export function createCustomerType(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     ICustomerType
-  > = SiteWhere.API.CustomerTypes.createCustomerType(axios, request);
+  > = API.CustomerTypes.createCustomerType(axios, request);
   return loaderWrapper(store, api);
 }
 
@@ -39,7 +39,7 @@ export function getCustomerType(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     ICustomerType
-  > = SiteWhere.API.CustomerTypes.getCustomerType(axios, token, format);
+  > = API.CustomerTypes.getCustomerType(axios, token, format);
   return loaderWrapper(store, api);
 }
 
@@ -57,7 +57,7 @@ export function updateCustomerType(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     ICustomerType
-  > = SiteWhere.API.CustomerTypes.updateCustomerType(axios, token, request);
+  > = API.CustomerTypes.updateCustomerType(axios, token, request);
   return loaderWrapper(store, api);
 }
 
@@ -75,7 +75,7 @@ export function listCustomerTypes(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     ICustomerTypeSearchResults
-  > = SiteWhere.API.CustomerTypes.listCustomerTypes(axios, criteria, format);
+  > = API.CustomerTypes.listCustomerTypes(axios, criteria, format);
   return loaderWrapper(store, api);
 }
 
@@ -91,6 +91,6 @@ export function deleteCustomerType(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     ICustomerType
-  > = SiteWhere.API.CustomerTypes.deleteCustomerType(axios, token);
+  > = API.CustomerTypes.deleteCustomerType(axios, token);
   return loaderWrapper(store, api);
 }

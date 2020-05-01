@@ -4,10 +4,6 @@ import {
   IAlertMessage
 } from "../libraries/application-model";
 import { AxiosResponse } from "axios";
-import Vue from "vue";
-
-/** Support Vue extended with Vuex store */
-export type VueWithStore = Vue & { $store: any };
 
 /**
  * Common error handler.
@@ -28,7 +24,7 @@ function errorResponse(error: Error): { data: IApplicationError } {
  * @param message
  */
 export function showMessage(
-  component: VueWithStore,
+  component: Vue,
   message: string
 ): IAlertMessage {
   let alert: IAlertMessage = {
@@ -45,7 +41,7 @@ export function showMessage(
  * @param message
  */
 export function showError(
-  component: VueWithStore,
+  component: Vue,
   error: Error
 ): IAlertMessage {
   let response: { data: IApplicationError } = errorResponse(error);
@@ -194,7 +190,7 @@ export function pagingForAllResults() {
 
 /** Generate a unique id */
 export function generateUniqueId(): string {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     let r = crypto.getRandomValues(new Uint8Array(1))[0] % 16 | 0;
     let v = c === "x" ? r : (r & 0x3) | 0x8;
     return v.toString(16);

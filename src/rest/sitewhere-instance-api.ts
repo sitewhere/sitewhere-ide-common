@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -16,7 +16,7 @@ export function getInstanceConfiguration(
   store: Store<ISiteWhereUIState>
 ): Promise<AxiosResponse<IInstanceConfiguration>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IInstanceConfiguration> = SiteWhere.API.Instance.getInstanceConfiguration(
+  let api: AxiosPromise<IInstanceConfiguration> = API.Instance.getInstanceConfiguration(
     axios
   );
   return loaderWrapper(store, api);
@@ -32,7 +32,7 @@ export function updateInstanceConfiguration(
   request: IInstanceConfiguration
 ): Promise<AxiosResponse<IInstanceConfiguration>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IInstanceConfiguration> = SiteWhere.API.Instance.updateInstanceConfiguration(
+  let api: AxiosPromise<IInstanceConfiguration> = API.Instance.updateInstanceConfiguration(
     axios,
     request
   );
@@ -47,7 +47,7 @@ export function getInstanceMicroservices(
   store: Store<ISiteWhereUIState>
 ): Promise<AxiosResponse<IMicroserviceSummary[]>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IMicroserviceSummary[]> = SiteWhere.API.Instance.getInstanceMicroservices(
+  let api: AxiosPromise<IMicroserviceSummary[]> = API.Instance.getInstanceMicroservices(
     axios
   );
   return loaderWrapper(store, api);
@@ -65,7 +65,7 @@ export function getTenantEngineConfiguration(
   tenant: string
 ): Promise<AxiosResponse<ITenantEngineConfiguration>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ITenantEngineConfiguration> = SiteWhere.API.Instance.getTenantEngineConfiguration(
+  let api: AxiosPromise<ITenantEngineConfiguration> = API.Instance.getTenantEngineConfiguration(
     axios,
     functionalArea,
     tenant
@@ -87,7 +87,7 @@ export function updateTenantEngineConfiguration(
   configuration: any
 ): Promise<AxiosResponse<ITenantEngineConfiguration>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ITenantEngineConfiguration> = SiteWhere.API.Instance.updateTenantEngineConfiguration(
+  let api: AxiosPromise<ITenantEngineConfiguration> = API.Instance.updateTenantEngineConfiguration(
     axios,
     functionalArea,
     tenant,

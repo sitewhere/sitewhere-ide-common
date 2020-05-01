@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -30,7 +30,7 @@ export function createArea(
   request: IAreaCreateRequest
 ): Promise<AxiosResponse<IArea>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IArea> = SiteWhere.API.Areas.createArea(axios, request);
+  let api: AxiosPromise<IArea> = API.Areas.createArea(axios, request);
   return loaderWrapper(store, api);
 }
 
@@ -46,7 +46,7 @@ export function getArea(
   format: IAreaResponseFormat
 ): Promise<AxiosResponse<IArea>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IArea> = SiteWhere.API.Areas.getArea(
+  let api: AxiosPromise<IArea> = API.Areas.getArea(
     axios,
     token,
     format
@@ -66,7 +66,7 @@ export function updateArea(
   request: IAreaCreateRequest
 ): Promise<AxiosResponse<IArea>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IArea> = SiteWhere.API.Areas.updateArea(
+  let api: AxiosPromise<IArea> = API.Areas.updateArea(
     axios,
     token,
     request
@@ -86,7 +86,7 @@ export function listAreas(
   format: IAreaResponseFormat
 ): Promise<AxiosResponse<IAreaSearchResults>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAreaSearchResults> = SiteWhere.API.Areas.listAreas(
+  let api: AxiosPromise<IAreaSearchResults> = API.Areas.listAreas(
     axios,
     criteria,
     format
@@ -104,7 +104,7 @@ export function deleteArea(
   token: string
 ): Promise<AxiosResponse<IArea>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IArea> = SiteWhere.API.Areas.deleteArea(axios, token);
+  let api: AxiosPromise<IArea> = API.Areas.deleteArea(axios, token);
   return loaderWrapper(store, api);
 }
 
@@ -124,7 +124,7 @@ export function listAssignmentsForArea(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAssignmentSearchResults
-  > = SiteWhere.API.Areas.listAssignmentsForArea(
+  > = API.Areas.listAssignmentsForArea(
     axios,
     token,
     criteria,
@@ -149,7 +149,7 @@ export function listLocationsForArea(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceLocationSearchResults
-  > = SiteWhere.API.Areas.listLocationsForArea(axios, token, criteria, format);
+  > = API.Areas.listLocationsForArea(axios, token, criteria, format);
   return loaderWrapper(store, api);
 }
 
@@ -169,7 +169,7 @@ export function listMeasurementsForArea(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceMeasurementSearchResults
-  > = SiteWhere.API.Areas.listMeasurementsForArea(
+  > = API.Areas.listMeasurementsForArea(
     axios,
     token,
     criteria,
@@ -194,6 +194,6 @@ export function listAlertsForArea(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAlertSearchResults
-  > = SiteWhere.API.Areas.listAlertsForArea(axios, token, criteria, format);
+  > = API.Areas.listAlertsForArea(axios, token, criteria, format);
   return loaderWrapper(store, api);
 }

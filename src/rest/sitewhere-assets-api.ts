@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -20,7 +20,7 @@ export function createAsset(
   request: IAssetCreateRequest
 ): Promise<AxiosResponse<IAsset>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAsset> = SiteWhere.API.Assets.createAsset(
+  let api: AxiosPromise<IAsset> = API.Assets.createAsset(
     axios,
     request
   );
@@ -39,7 +39,7 @@ export function getAsset(
   format: IAssetResponseFormat
 ): Promise<AxiosResponse<IAsset>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAsset> = SiteWhere.API.Assets.getAsset(
+  let api: AxiosPromise<IAsset> = API.Assets.getAsset(
     axios,
     token,
     format
@@ -59,7 +59,7 @@ export function updateAsset(
   request: IAssetCreateRequest
 ): Promise<AxiosResponse<IAsset>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAsset> = SiteWhere.API.Assets.updateAsset(
+  let api: AxiosPromise<IAsset> = API.Assets.updateAsset(
     axios,
     token,
     request
@@ -79,7 +79,7 @@ export function listAssets(
   format: IAssetResponseFormat
 ): Promise<AxiosResponse<IAssetSearchResults>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAssetSearchResults> = SiteWhere.API.Assets.listAssets(
+  let api: AxiosPromise<IAssetSearchResults> = API.Assets.listAssets(
     axios,
     criteria,
     format
@@ -97,7 +97,7 @@ export function deleteAsset(
   token: string
 ): Promise<AxiosResponse<IAsset>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAsset> = SiteWhere.API.Assets.deleteAsset(
+  let api: AxiosPromise<IAsset> = API.Assets.deleteAsset(
     axios,
     token
   );

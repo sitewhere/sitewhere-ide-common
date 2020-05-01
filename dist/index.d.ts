@@ -1,9 +1,7 @@
 import { VueConstructor } from "vue";
-
 export * from "./libraries/application-model";
 export * from "./libraries/constants";
 export * from "./libraries/utils";
-
 export * from "./rest/sitewhere-api-wrapper";
 export * from "./rest/sitewhere-area-types-api";
 export * from "./rest/sitewhere-areas-api";
@@ -25,8 +23,5 @@ export * from "./rest/sitewhere-scripting-api";
 export * from "./rest/sitewhere-tenants-api";
 export * from "./rest/sitewhere-users-api";
 export * from "./rest/sitewhere-zones-api";
-
-function SiteWhereIdeCommon(Vue: VueConstructor): void {
-}
-
+declare function SiteWhereIdeCommon(Vue: VueConstructor): void;
 export default SiteWhereIdeCommon;

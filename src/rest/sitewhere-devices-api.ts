@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -23,7 +23,7 @@ export function createDevice(
   request: IDeviceCreateRequest
 ): Promise<AxiosResponse<IDevice>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IDevice> = SiteWhere.API.Devices.createDevice(
+  let api: AxiosPromise<IDevice> = API.Devices.createDevice(
     axios,
     request
   );
@@ -41,7 +41,7 @@ export function getDevice(
   format: IDeviceResponseFormat
 ): Promise<AxiosResponse<IDevice>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IDevice> = SiteWhere.API.Devices.getDevice(
+  let api: AxiosPromise<IDevice> = API.Devices.getDevice(
     axios,
     token,
     format
@@ -61,7 +61,7 @@ export function updateDevice(
   request: IDeviceCreateRequest
 ): Promise<AxiosResponse<IDevice>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IDevice> = SiteWhere.API.Devices.updateDevice(
+  let api: AxiosPromise<IDevice> = API.Devices.updateDevice(
     axios,
     token,
     request
@@ -83,7 +83,7 @@ export function listDevices(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceSearchResults
-  > = SiteWhere.API.Devices.listDevices(axios, criteria, format);
+  > = API.Devices.listDevices(axios, criteria, format);
   return loaderWrapper(store, api);
 }
 
@@ -103,7 +103,7 @@ export function listDeviceAssignmentHistory(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAssignmentSearchResults
-  > = SiteWhere.API.Devices.listDeviceAssignmentHistory(
+  > = API.Devices.listDeviceAssignmentHistory(
     axios,
     token,
     criteria,
@@ -122,7 +122,7 @@ export function deleteDevice(
   token: string
 ): Promise<AxiosResponse<IDevice>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IDevice> = SiteWhere.API.Devices.deleteDevice(
+  let api: AxiosPromise<IDevice> = API.Devices.deleteDevice(
     axios,
     token
   );

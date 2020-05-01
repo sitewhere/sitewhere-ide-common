@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -30,7 +30,7 @@ export function createCustomer(
   request: ICustomerCreateRequest
 ): Promise<AxiosResponse<ICustomer>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ICustomer> = SiteWhere.API.Customers.createCustomer(
+  let api: AxiosPromise<ICustomer> = API.Customers.createCustomer(
     axios,
     request
   );
@@ -49,7 +49,7 @@ export function getCustomer(
   format: ICustomerResponseFormat
 ): Promise<AxiosResponse<ICustomer>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ICustomer> = SiteWhere.API.Customers.getCustomer(
+  let api: AxiosPromise<ICustomer> = API.Customers.getCustomer(
     axios,
     token,
     format
@@ -69,7 +69,7 @@ export function updateCustomer(
   request: ICustomerCreateRequest
 ): Promise<AxiosResponse<ICustomer>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ICustomer> = SiteWhere.API.Customers.updateCustomer(
+  let api: AxiosPromise<ICustomer> = API.Customers.updateCustomer(
     axios,
     token,
     request
@@ -91,7 +91,7 @@ export function listCustomers(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     ICustomerSearchResults
-  > = SiteWhere.API.Customers.listCustomers(axios, criteria, format);
+  > = API.Customers.listCustomers(axios, criteria, format);
   return loaderWrapper(store, api);
 }
 
@@ -105,7 +105,7 @@ export function deleteCustomer(
   token: string
 ): Promise<AxiosResponse<ICustomer>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<ICustomer> = SiteWhere.API.Customers.deleteCustomer(
+  let api: AxiosPromise<ICustomer> = API.Customers.deleteCustomer(
     axios,
     token
   );
@@ -128,7 +128,7 @@ export function listAssignmentsForCustomer(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAssignmentSearchResults
-  > = SiteWhere.API.Customers.listAssignmentsForCustomer(
+  > = API.Customers.listAssignmentsForCustomer(
     axios,
     token,
     criteria,
@@ -153,7 +153,7 @@ export function listLocationsForCustomer(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceLocationSearchResults
-  > = SiteWhere.API.Customers.listLocationsForCustomer(
+  > = API.Customers.listLocationsForCustomer(
     axios,
     token,
     criteria,
@@ -178,7 +178,7 @@ export function listMeasurementsForCustomer(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceMeasurementSearchResults
-  > = SiteWhere.API.Customers.listMeasurementsForCustomer(
+  > = API.Customers.listMeasurementsForCustomer(
     axios,
     token,
     criteria,
@@ -203,7 +203,7 @@ export function listAlertsForCustomer(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAlertSearchResults
-  > = SiteWhere.API.Customers.listAlertsForCustomer(
+  > = API.Customers.listAlertsForCustomer(
     axios,
     token,
     criteria,

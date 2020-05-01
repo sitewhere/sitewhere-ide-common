@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -20,7 +20,7 @@ export function createAssetType(
   request: IAssetTypeCreateRequest
 ): Promise<AxiosResponse<IAssetType>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAssetType> = SiteWhere.API.AssetTypes.createAssetType(
+  let api: AxiosPromise<IAssetType> = API.AssetTypes.createAssetType(
     axios,
     request
   );
@@ -39,7 +39,7 @@ export function getAssetType(
   format: IAssetTypeResponseFormat
 ): Promise<AxiosResponse<IAssetType>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAssetType> = SiteWhere.API.AssetTypes.getAssetType(
+  let api: AxiosPromise<IAssetType> = API.AssetTypes.getAssetType(
     axios,
     token,
     format
@@ -59,7 +59,7 @@ export function updateAssetType(
   request: IAssetTypeCreateRequest
 ): Promise<AxiosResponse<IAssetType>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAssetType> = SiteWhere.API.AssetTypes.updateAssetType(
+  let api: AxiosPromise<IAssetType> = API.AssetTypes.updateAssetType(
     axios,
     token,
     request
@@ -81,7 +81,7 @@ export function listAssetTypes(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IAssetTypeSearchResults
-  > = SiteWhere.API.AssetTypes.listAssetTypes(axios, criteria, format);
+  > = API.AssetTypes.listAssetTypes(axios, criteria, format);
   return loaderWrapper(store, api);
 }
 
@@ -95,7 +95,7 @@ export function deleteAssetType(
   token: string
 ): Promise<AxiosResponse<IAssetType>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAssetType> = SiteWhere.API.AssetTypes.deleteAssetType(
+  let api: AxiosPromise<IAssetType> = API.AssetTypes.deleteAssetType(
     axios,
     token
   );

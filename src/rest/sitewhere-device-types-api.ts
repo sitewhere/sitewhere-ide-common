@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -28,7 +28,7 @@ export function createDeviceType(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceType
-  > = SiteWhere.API.DeviceTypes.createDeviceType(axios, request);
+  > = API.DeviceTypes.createDeviceType(axios, request);
   return loaderWrapper(store, api);
 }
 
@@ -44,7 +44,7 @@ export function getDeviceType(
   format: IDeviceTypeResponseFormat
 ): Promise<AxiosResponse<IDeviceType>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IDeviceType> = SiteWhere.API.DeviceTypes.getDeviceType(
+  let api: AxiosPromise<IDeviceType> = API.DeviceTypes.getDeviceType(
     axios,
     token,
     format
@@ -66,7 +66,7 @@ export function updateDeviceType(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceType
-  > = SiteWhere.API.DeviceTypes.updateDeviceType(axios, token, request);
+  > = API.DeviceTypes.updateDeviceType(axios, token, request);
   return loaderWrapper(store, api);
 }
 
@@ -84,7 +84,7 @@ export function listDeviceTypes(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceTypeSearchResults
-  > = SiteWhere.API.DeviceTypes.listDeviceTypes(axios, criteria, format);
+  > = API.DeviceTypes.listDeviceTypes(axios, criteria, format);
   return loaderWrapper(store, api);
 }
 
@@ -100,7 +100,7 @@ export function deleteDeviceType(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceType
-  > = SiteWhere.API.DeviceTypes.deleteDeviceType(axios, token);
+  > = API.DeviceTypes.deleteDeviceType(axios, token);
   return loaderWrapper(store, api);
 }
 
@@ -118,7 +118,7 @@ export function createDeviceCommand(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceCommand
-  > = SiteWhere.API.DeviceTypes.createDeviceCommand(
+  > = API.DeviceTypes.createDeviceCommand(
     axios,
     deviceTypeToken,
     request
@@ -142,7 +142,7 @@ export function getDeviceCommand(
   let axios = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceCommand
-  > = SiteWhere.API.DeviceTypes.getDeviceCommand(
+  > = API.DeviceTypes.getDeviceCommand(
     axios,
     deviceTypeToken,
     commandToken,
@@ -167,7 +167,7 @@ export function updateDeviceCommand(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceCommand
-  > = SiteWhere.API.DeviceTypes.updateDeviceCommand(
+  > = API.DeviceTypes.updateDeviceCommand(
     axios,
     deviceTypeToken,
     commandToken,
@@ -190,7 +190,7 @@ export function deleteDeviceCommand(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceCommand
-  > = SiteWhere.API.DeviceTypes.deleteDeviceCommand(
+  > = API.DeviceTypes.deleteDeviceCommand(
     axios,
     deviceTypeToken,
     commandToken
@@ -212,7 +212,7 @@ export function createDeviceStatus(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceStatus
-  > = SiteWhere.API.DeviceTypes.createDeviceStatus(
+  > = API.DeviceTypes.createDeviceStatus(
     axios,
     deviceTypeToken,
     request
@@ -236,7 +236,7 @@ export function getDeviceStatus(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceStatus
-  > = SiteWhere.API.DeviceTypes.getDeviceStatus(
+  > = API.DeviceTypes.getDeviceStatus(
     axios,
     deviceTypeToken,
     statusToken,
@@ -261,7 +261,7 @@ export function updateDeviceStatus(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceStatus
-  > = SiteWhere.API.DeviceTypes.updateDeviceStatus(
+  > = API.DeviceTypes.updateDeviceStatus(
     axios,
     deviceTypeToken,
     statusToken,
@@ -284,7 +284,7 @@ export function deleteDeviceStatus(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceStatus
-  > = SiteWhere.API.DeviceTypes.deleteDeviceStatus(
+  > = API.DeviceTypes.deleteDeviceStatus(
     axios,
     deviceTypeToken,
     statusToken

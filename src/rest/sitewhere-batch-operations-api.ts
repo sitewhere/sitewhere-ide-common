@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -29,7 +29,7 @@ export function getBatchOperation(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IBatchOperation
-  > = SiteWhere.API.BatchOperations.getBatchOperation(axios, token, format);
+  > = API.BatchOperations.getBatchOperation(axios, token, format);
   return loaderWrapper(store, api);
 }
 
@@ -47,7 +47,7 @@ export function listBatchOperations(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IBatchOperationSearchResults
-  > = SiteWhere.API.BatchOperations.listBatchOperations(
+  > = API.BatchOperations.listBatchOperations(
     axios,
     criteria,
     format
@@ -71,7 +71,7 @@ export function listBatchOperationElements(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IBatchElementSearchResults
-  > = SiteWhere.API.BatchOperations.listBatchOperationElements(
+  > = API.BatchOperations.listBatchOperationElements(
     axios,
     token,
     criteria,
@@ -92,7 +92,7 @@ export function createBatchCommandInvocation(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IBatchOperation
-  > = SiteWhere.API.BatchOperations.createBatchCommandInvocation(
+  > = API.BatchOperations.createBatchCommandInvocation(
     axios,
     request
   );
@@ -111,7 +111,7 @@ export function createInvocationsByDeviceCriteria(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IBatchOperation
-  > = SiteWhere.API.BatchOperations.createInvocationsByDeviceCriteria(
+  > = API.BatchOperations.createInvocationsByDeviceCriteria(
     axios,
     request
   );
@@ -130,7 +130,7 @@ export function createInvocationsByAssignmentCriteria(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IBatchOperation
-  > = SiteWhere.API.BatchOperations.createInvocationsByAssignmentCriteria(
+  > = API.BatchOperations.createInvocationsByAssignmentCriteria(
     axios,
     request
   );

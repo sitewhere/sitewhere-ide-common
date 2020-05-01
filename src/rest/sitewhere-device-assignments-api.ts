@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -43,7 +43,7 @@ export function createDeviceAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAssignment
-  > = SiteWhere.API.DeviceAssignments.createDeviceAssignment(axios, request);
+  > = API.DeviceAssignments.createDeviceAssignment(axios, request);
   return loaderWrapper(store, api);
 }
 
@@ -61,7 +61,7 @@ export function getDeviceAssignment(
   let axios = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAssignment
-  > = SiteWhere.API.DeviceAssignments.getDeviceAssignment(axios, token, format);
+  > = API.DeviceAssignments.getDeviceAssignment(axios, token, format);
   return loaderWrapper(store, api);
 }
 
@@ -79,7 +79,7 @@ export function listDeviceAssignments(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAssignmentSearchResults
-  > = SiteWhere.API.DeviceAssignments.listDeviceAssignments(
+  > = API.DeviceAssignments.listDeviceAssignments(
     axios,
     criteria,
     format
@@ -101,7 +101,7 @@ export function searchDeviceAssignments(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAssignmentSearchResults
-  > = SiteWhere.API.DeviceAssignments.searchDeviceAssignments(
+  > = API.DeviceAssignments.searchDeviceAssignments(
     axios,
     criteria,
     format
@@ -121,7 +121,7 @@ export function deleteDeviceAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAssignment
-  > = SiteWhere.API.DeviceAssignments.deleteDeviceAssignment(axios, token);
+  > = API.DeviceAssignments.deleteDeviceAssignment(axios, token);
   return loaderWrapper(store, api);
 }
 
@@ -139,7 +139,7 @@ export function createMeasurementsForAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceMeasurement
-  > = SiteWhere.API.DeviceAssignments.createMeasurementForAssignment(
+  > = API.DeviceAssignments.createMeasurementForAssignment(
     axios,
     token,
     request
@@ -163,7 +163,7 @@ export function listMeasurementsForAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceMeasurementSearchResults
-  > = SiteWhere.API.DeviceAssignments.listMeasurementsForAssignment(
+  > = API.DeviceAssignments.listMeasurementsForAssignment(
     axios,
     token,
     criteria,
@@ -188,7 +188,7 @@ export function listMeasurementsForAssignmentAsChartSeries(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IChartSeries<number>
-  > = SiteWhere.API.DeviceAssignments.listMeasurementsForAssignmentAsChartSeries(
+  > = API.DeviceAssignments.listMeasurementsForAssignmentAsChartSeries(
     axios,
     token,
     criteria,
@@ -211,7 +211,7 @@ export function createLocationForAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceLocation
-  > = SiteWhere.API.DeviceAssignments.createLocationForAssignment(
+  > = API.DeviceAssignments.createLocationForAssignment(
     axios,
     token,
     request
@@ -235,7 +235,7 @@ export function listLocationsForAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceLocationSearchResults
-  > = SiteWhere.API.DeviceAssignments.listLocationsForAssignment(
+  > = API.DeviceAssignments.listLocationsForAssignment(
     axios,
     token,
     criteria,
@@ -258,7 +258,7 @@ export function createAlertForAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAlert
-  > = SiteWhere.API.DeviceAssignments.createAlertForAssignment(
+  > = API.DeviceAssignments.createAlertForAssignment(
     axios,
     token,
     request
@@ -281,7 +281,7 @@ export function listAlertsForAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAlertSearchResults
-  > = SiteWhere.API.DeviceAssignments.listAlertsForAssignment(
+  > = API.DeviceAssignments.listAlertsForAssignment(
     axios,
     token,
     criteria,
@@ -304,7 +304,7 @@ export function createCommandInvocationForAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceCommandInvocation
-  > = SiteWhere.API.DeviceAssignments.createCommandInvocationForAssignment(
+  > = API.DeviceAssignments.createCommandInvocationForAssignment(
     axios,
     token,
     request
@@ -328,7 +328,7 @@ export function scheduleCommandInvocation(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceCommandInvocation
-  > = SiteWhere.API.DeviceAssignments.scheduleCommandInvocationForAssignment(
+  > = API.DeviceAssignments.scheduleCommandInvocationForAssignment(
     axios,
     token,
     scheduleToken,
@@ -353,7 +353,7 @@ export function listCommandInvocationsForAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceCommandInvocationSearchResults
-  > = SiteWhere.API.DeviceAssignments.listCommandInvocationsForAssignment(
+  > = API.DeviceAssignments.listCommandInvocationsForAssignment(
     axios,
     token,
     criteria,
@@ -378,7 +378,7 @@ export function listCommandResponsesForAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceCommandResponseSearchResults
-  > = SiteWhere.API.DeviceAssignments.listCommandResponsesForAssignment(
+  > = API.DeviceAssignments.listCommandResponsesForAssignment(
     axios,
     token,
     criteria,
@@ -399,7 +399,7 @@ export function releaseAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAssignment
-  > = SiteWhere.API.DeviceAssignments.releaseDeviceAssignment(axios, token);
+  > = API.DeviceAssignments.releaseDeviceAssignment(axios, token);
   return loaderWrapper(store, api);
 }
 
@@ -415,6 +415,6 @@ export function missingAssignment(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceAssignment
-  > = SiteWhere.API.DeviceAssignments.missingDeviceAssignment(axios, token);
+  > = API.DeviceAssignments.missingDeviceAssignment(axios, token);
   return loaderWrapper(store, api);
 }

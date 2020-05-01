@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -21,7 +21,7 @@ export function createUser(
   request: IUserCreateRequest
 ): Promise<AxiosResponse<IUser>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IUser> = SiteWhere.API.Users.createUser(axios, request);
+  let api: AxiosPromise<IUser> = API.Users.createUser(axios, request);
   return loaderWrapper(store, api);
 }
 
@@ -37,7 +37,7 @@ export function getUser(
   format: IUserResponseFormat
 ): Promise<AxiosResponse<IUser>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  var api: AxiosPromise<IUser> = SiteWhere.API.Users.getUser(
+  var api: AxiosPromise<IUser> = API.Users.getUser(
     axios,
     username,
     format
@@ -57,7 +57,7 @@ export function updateUser(
   request: IUserCreateRequest
 ): Promise<AxiosResponse<IUser>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IUser> = SiteWhere.API.Users.updateUser(
+  let api: AxiosPromise<IUser> = API.Users.updateUser(
     axios,
     username,
     request
@@ -75,7 +75,7 @@ export function deleteUser(
   username: string
 ): Promise<AxiosResponse<IUser>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IUser> = SiteWhere.API.Users.deleteUser(
+  let api: AxiosPromise<IUser> = API.Users.deleteUser(
     axios,
     username
   );
@@ -94,7 +94,7 @@ export function listUsers(
   format: IUserResponseFormat
 ): Promise<AxiosResponse<IUserSearchResults>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IUserSearchResults> = SiteWhere.API.Users.listUsers(
+  let api: AxiosPromise<IUserSearchResults> = API.Users.listUsers(
     axios,
     criteria,
     format
@@ -112,6 +112,6 @@ export function getAuthoritiesHierarchy(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IGrantedAuthorityHierarchyNode[]
-  > = SiteWhere.API.Users.getAuthoritiesHierarchy(axios);
+  > = API.Users.getAuthoritiesHierarchy(axios);
   return loaderWrapper(store, api);
 }

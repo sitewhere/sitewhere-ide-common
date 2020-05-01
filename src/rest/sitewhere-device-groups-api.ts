@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -27,7 +27,7 @@ export function createDeviceGroup(
   let axios = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceGroup
-  > = SiteWhere.API.DeviceGroups.createDeviceGroup(axios, request);
+  > = API.DeviceGroups.createDeviceGroup(axios, request);
   return loaderWrapper(store, api);
 }
 
@@ -45,7 +45,7 @@ export function getDeviceGroup(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceGroup
-  > = SiteWhere.API.DeviceGroups.getDeviceGroup(axios, token, format);
+  > = API.DeviceGroups.getDeviceGroup(axios, token, format);
   return loaderWrapper(store, api);
 }
 
@@ -63,7 +63,7 @@ export function updateDeviceGroup(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceGroup
-  > = SiteWhere.API.DeviceGroups.updateDeviceGroup(axios, token, request);
+  > = API.DeviceGroups.updateDeviceGroup(axios, token, request);
   return loaderWrapper(store, api);
 }
 
@@ -81,7 +81,7 @@ export function listDeviceGroups(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceGroupSearchResults
-  > = SiteWhere.API.DeviceGroups.listDeviceGroups(axios, criteria, format);
+  > = API.DeviceGroups.listDeviceGroups(axios, criteria, format);
   return loaderWrapper(store, api);
 }
 
@@ -101,7 +101,7 @@ export function listDeviceGroupElements(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceGroupElementSearchResults
-  > = SiteWhere.API.DeviceGroups.listDeviceGroupElements(
+  > = API.DeviceGroups.listDeviceGroupElements(
     axios,
     token,
     criteria,
@@ -124,7 +124,7 @@ export function createDeviceGroupElements(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceGroupElement
-  > = SiteWhere.API.DeviceGroups.createDeviceGroupElements(
+  > = API.DeviceGroups.createDeviceGroupElements(
     axios,
     token,
     request
@@ -146,7 +146,7 @@ export function deleteDeviceGroupElement(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceGroupElement
-  > = SiteWhere.API.DeviceGroups.deleteDeviceGroupElement(
+  > = API.DeviceGroups.deleteDeviceGroupElement(
     axios,
     token,
     elementId
@@ -166,6 +166,6 @@ export function deleteDeviceGroup(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IDeviceGroup
-  > = SiteWhere.API.DeviceGroups.deleteDeviceGroup(axios, token);
+  > = API.DeviceGroups.deleteDeviceGroup(axios, token);
   return loaderWrapper(store, api);
 }

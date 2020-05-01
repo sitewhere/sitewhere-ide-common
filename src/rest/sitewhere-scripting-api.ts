@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -23,7 +23,7 @@ export function listScriptCategories(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IScriptCategory[]
-  > = SiteWhere.API.Scripting.listScriptCategories(axios, identifier);
+  > = API.Scripting.listScriptCategories(axios, identifier);
   return loaderWrapper(store, api);
 }
 
@@ -41,7 +41,7 @@ export function listScriptTemplates(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IScriptTemplate[]
-  > = SiteWhere.API.Scripting.listScriptTemplates(axios, identifier, category);
+  > = API.Scripting.listScriptTemplates(axios, identifier, category);
   return loaderWrapper(store, api);
 }
 
@@ -59,7 +59,7 @@ export function listTenantScriptMetadata(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IScriptMetadata[]
-  > = SiteWhere.API.Scripting.listTenantScripts(axios, identifier, tenantToken);
+  > = API.Scripting.listTenantScripts(axios, identifier, tenantToken);
   return loaderWrapper(store, api);
 }
 
@@ -79,7 +79,7 @@ export function listTenantScriptsForCategory(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IScriptMetadata[]
-  > = SiteWhere.API.Scripting.listTenantScriptsForCategory(
+  > = API.Scripting.listTenantScriptsForCategory(
     axios,
     identifier,
     tenantToken,
@@ -102,7 +102,7 @@ export function listTenantScriptsByCategory(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IScriptCategory[]
-  > = SiteWhere.API.Scripting.listTenantScriptsByCategory(
+  > = API.Scripting.listTenantScriptsByCategory(
     axios,
     identifier,
     tenantToken
@@ -126,7 +126,7 @@ export function getTenantScriptMetadata(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IScriptMetadata
-  > = SiteWhere.API.Scripting.getTenantScript(
+  > = API.Scripting.getTenantScript(
     axios,
     identifier,
     tenantToken,
@@ -151,7 +151,7 @@ export function createTenantScript(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IScriptMetadata
-  > = SiteWhere.API.Scripting.createTenantScript(
+  > = API.Scripting.createTenantScript(
     axios,
     identifier,
     tenantToken,
@@ -178,7 +178,7 @@ export function getTenantScriptContent(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     string
-  > = SiteWhere.API.Scripting.getTenantScriptContent(
+  > = API.Scripting.getTenantScriptContent(
     axios,
     identifier,
     tenantToken,
@@ -208,7 +208,7 @@ export function updateTenantScript(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IScriptMetadata
-  > = SiteWhere.API.Scripting.updateTenantScript(
+  > = API.Scripting.updateTenantScript(
     axios,
     identifier,
     tenantToken,
@@ -239,7 +239,7 @@ export function cloneTenantScript(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IScriptVersion
-  > = SiteWhere.API.Scripting.cloneTenantScript(
+  > = API.Scripting.cloneTenantScript(
     axios,
     identifier,
     tenantToken,
@@ -268,7 +268,7 @@ export function activateTenantScript(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IScriptMetadata
-  > = SiteWhere.API.Scripting.activateTenantScript(
+  > = API.Scripting.activateTenantScript(
     axios,
     identifier,
     tenantToken,

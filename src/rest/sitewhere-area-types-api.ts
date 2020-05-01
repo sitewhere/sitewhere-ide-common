@@ -1,4 +1,4 @@
-import * as SiteWhere from "sitewhere-rest-api";
+import { API } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -20,7 +20,7 @@ export function createAreaType(
   request: IAreaTypeCreateRequest
 ): Promise<AxiosResponse<IAreaType>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAreaType> = SiteWhere.API.AreaTypes.createAreaType(
+  let api: AxiosPromise<IAreaType> = API.AreaTypes.createAreaType(
     axios,
     request
   );
@@ -39,7 +39,7 @@ export function getAreaType(
   format: IAreaTypeResponseFormat
 ): Promise<AxiosResponse<IAreaType>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAreaType> = SiteWhere.API.AreaTypes.getAreaType(
+  let api: AxiosPromise<IAreaType> = API.AreaTypes.getAreaType(
     axios,
     token,
     format
@@ -59,7 +59,7 @@ export function updateAreaType(
   request: IAreaTypeCreateRequest
 ): Promise<AxiosResponse<IAreaType>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAreaType> = SiteWhere.API.AreaTypes.updateAreaType(
+  let api: AxiosPromise<IAreaType> = API.AreaTypes.updateAreaType(
     axios,
     token,
     request
@@ -81,7 +81,7 @@ export function listAreaTypes(
   let axios: AxiosInstance = createCoreApiCall(store);
   let api: AxiosPromise<
     IAreaTypeSearchResults
-  > = SiteWhere.API.AreaTypes.listAreaTypes(axios, criteria, format);
+  > = API.AreaTypes.listAreaTypes(axios, criteria, format);
   return loaderWrapper(store, api);
 }
 
@@ -95,7 +95,7 @@ export function deleteAreaType(
   token: string
 ): Promise<AxiosResponse<IAreaType>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<IAreaType> = SiteWhere.API.AreaTypes.deleteAreaType(
+  let api: AxiosPromise<IAreaType> = API.AreaTypes.deleteAreaType(
     axios,
     token
   );
