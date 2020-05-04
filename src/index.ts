@@ -1,5 +1,3 @@
-import { VueConstructor } from "vue";
-
 export * from "./libraries/application-model";
 export * from "./libraries/constants";
 export * from "./libraries/utils";
