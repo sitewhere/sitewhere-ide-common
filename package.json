@@ -30,7 +30,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "moment": "^2.25.1",
-    "sitewhere-rest-api": "^3.0.0-alpha.2"
+    "sitewhere-rest-api": "^3.0.0-alpha.3"
   },
   "devDependencies": {
     "@types/node": "^13.13.4",
