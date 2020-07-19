@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState } from "./sitewhere-api-wrapper";
-import { IDeviceCreateRequest, IDevice, IDeviceSearchCriteria, IDeviceResponseFormat, IDeviceSearchResults, ISearchCriteria, IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults } from "sitewhere-rest-api";
+import { IDeviceCreateRequest, IDevice, IDeviceSearchCriteria, IDeviceResponseFormat, IDeviceSearchResults, IDeviceSummarySearchResults, ISearchCriteria, IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults } from "sitewhere-rest-api";
 /**
  * Create a device.
  * @param store
@@ -28,6 +28,13 @@ export declare function updateDevice(store: Store<ISiteWhereUIState>, token: str
  * @param format
  */
 export declare function listDevices(store: Store<ISiteWhereUIState>, criteria: IDeviceSearchCriteria, format: IDeviceResponseFormat): Promise<AxiosResponse<IDeviceSearchResults>>;
+/**
+ * List summaries for devices that match criteria.
+ * @param store
+ * @param criteria
+ * @param format
+ */
+export declare function listDeviceSummaries(store: Store<ISiteWhereUIState>, criteria: IDeviceSearchCriteria): Promise<AxiosResponse<IDeviceSummarySearchResults>>;
 /**
  * List assignment history for a device.
  * @param store

@@ -1353,6 +1353,17 @@ function listDevices(store, criteria, format) {
     return loaderWrapper(store, api);
 }
 /**
+ * List summaries for devices that match criteria.
+ * @param store
+ * @param criteria
+ * @param format
+ */
+function listDeviceSummaries(store, criteria) {
+    var axios = createCoreApiCall(store);
+    var api = sitewhereRestApi.API.Devices.listDeviceSummaries(axios, criteria);
+    return loaderWrapper(store, api);
+}
+/**
  * List assignment history for a device.
  * @param store
  * @param token
@@ -1910,6 +1921,7 @@ exports.listDeviceCommandsByNamespace = listDeviceCommandsByNamespace;
 exports.listDeviceGroupElements = listDeviceGroupElements;
 exports.listDeviceGroups = listDeviceGroups;
 exports.listDeviceStatuses = listDeviceStatuses;
+exports.listDeviceSummaries = listDeviceSummaries;
 exports.listDeviceTypes = listDeviceTypes;
 exports.listDevices = listDevices;
 exports.listLocationsForArea = listLocationsForArea;

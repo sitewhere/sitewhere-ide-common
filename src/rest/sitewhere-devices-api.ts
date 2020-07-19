@@ -5,9 +5,11 @@ import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere
 import {
   IDeviceCreateRequest,
   IDevice,
+  IDeviceSummary,
   IDeviceSearchCriteria,
   IDeviceResponseFormat,
   IDeviceSearchResults,
+  IDeviceSummarySearchResults,
   ISearchCriteria,
   IDeviceAssignmentResponseFormat,
   IDeviceAssignmentSearchResults
@@ -84,6 +86,23 @@ export function listDevices(
   let api: AxiosPromise<
     IDeviceSearchResults
   > = API.Devices.listDevices(axios, criteria, format);
+  return loaderWrapper(store, api);
+}
+
+/**
+ * List summaries for devices that match criteria.
+ * @param store
+ * @param criteria
+ * @param format
+ */
+export function listDeviceSummaries(
+  store: Store<ISiteWhereUIState>,
+  criteria: IDeviceSearchCriteria
+): Promise<AxiosResponse<IDeviceSummarySearchResults>> {
+  let axios: AxiosInstance = createCoreApiCall(store);
+  let api: AxiosPromise<
+    IDeviceSummarySearchResults
+  > = API.Devices.listDeviceSummaries(axios, criteria);
   return loaderWrapper(store, api);
 }
 
