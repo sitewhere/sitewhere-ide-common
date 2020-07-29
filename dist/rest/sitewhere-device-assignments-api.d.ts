@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState } from "./sitewhere-api-wrapper";
-import { IDeviceAssignmentCreateRequest, IDeviceAssignment, IDeviceAssignmentSimpleCriteria, IDeviceAssignmentSearchCriteria, IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults, IDeviceMeasurementCreateRequest, IDeviceMeasurement, IChartSeries, IDeviceLocationCreateRequest, IDeviceLocation, IDeviceAlertCreateRequest, IDeviceAlert, IDeviceCommandInvocationCreateRequest, IDeviceCommandInvocation, IDeviceMeasurementSearchResults, IDeviceLocationSearchResults, IDeviceAlertSearchResults, IDeviceCommandInvocationSearchResults, IDeviceCommandResponseSearchResults, IDateRangeSearchCriteria, IDeviceMeasurementResponseFormat, IDeviceAlertResponseFormat, IDeviceLocationResponseFormat, IDeviceCommandInvocationResponseFormat, IDeviceCommandResponseResponseFormat } from "sitewhere-rest-api";
+import { IDeviceAssignmentCreateRequest, IDeviceAssignment, IDeviceAssignmentSimpleCriteria, IDeviceAssignmentSearchCriteria, IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults, IDeviceAssignmentSummarySearchResults, IDeviceMeasurementCreateRequest, IDeviceMeasurement, IChartSeries, IDeviceLocationCreateRequest, IDeviceLocation, IDeviceAlertCreateRequest, IDeviceAlert, IDeviceCommandInvocationCreateRequest, IDeviceCommandInvocation, IDeviceMeasurementSearchResults, IDeviceLocationSearchResults, IDeviceAlertSearchResults, IDeviceCommandInvocationSearchResults, IDeviceCommandResponseSearchResults, IDateRangeSearchCriteria, IDeviceMeasurementResponseFormat, IDeviceAlertResponseFormat, IDeviceLocationResponseFormat, IDeviceCommandInvocationResponseFormat, IDeviceCommandResponseResponseFormat } from "sitewhere-rest-api";
 /**
  * Create a device assignment.
  * @param store
@@ -29,6 +29,13 @@ export declare function listDeviceAssignments(store: Store<ISiteWhereUIState>, c
  * @param format
  */
 export declare function searchDeviceAssignments(store: Store<ISiteWhereUIState>, criteria: IDeviceAssignmentSearchCriteria, format: IDeviceAssignmentResponseFormat): Promise<AxiosResponse<IDeviceAssignmentSearchResults>>;
+/**
+ * Search device assignment summaries that match criteria.
+ * @param store
+ * @param criteria
+ * @param format
+ */
+export declare function searchDeviceAssignmentSummaries(store: Store<ISiteWhereUIState>, criteria: IDeviceAssignmentSearchCriteria, format: IDeviceAssignmentResponseFormat): Promise<AxiosResponse<IDeviceAssignmentSummarySearchResults>>;
 /**
  * Delete an existing device assignment.
  * @param store

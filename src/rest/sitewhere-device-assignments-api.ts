@@ -9,6 +9,7 @@ import {
   IDeviceAssignmentSearchCriteria,
   IDeviceAssignmentResponseFormat,
   IDeviceAssignmentSearchResults,
+  IDeviceAssignmentSummarySearchResults,
   IDeviceMeasurementCreateRequest,
   IDeviceMeasurement,
   IChartSeries,
@@ -102,6 +103,28 @@ export function searchDeviceAssignments(
   let api: AxiosPromise<
     IDeviceAssignmentSearchResults
   > = API.DeviceAssignments.searchDeviceAssignments(
+    axios,
+    criteria,
+    format
+  );
+  return loaderWrapper(store, api);
+}
+
+/**
+ * Search device assignment summaries that match criteria.
+ * @param store
+ * @param criteria
+ * @param format
+ */
+export function searchDeviceAssignmentSummaries(
+  store: Store<ISiteWhereUIState>,
+  criteria: IDeviceAssignmentSearchCriteria,
+  format: IDeviceAssignmentResponseFormat
+): Promise<AxiosResponse<IDeviceAssignmentSummarySearchResults>> {
+  let axios: AxiosInstance = createCoreApiCall(store);
+  let api: AxiosPromise<
+    IDeviceAssignmentSummarySearchResults
+  > = API.DeviceAssignments.searchDeviceAssignmentSummaries(
     axios,
     criteria,
     format

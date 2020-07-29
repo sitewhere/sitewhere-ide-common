@@ -872,6 +872,17 @@ function searchDeviceAssignments(store, criteria, format) {
     return loaderWrapper(store, api);
 }
 /**
+ * Search device assignment summaries that match criteria.
+ * @param store
+ * @param criteria
+ * @param format
+ */
+function searchDeviceAssignmentSummaries(store, criteria, format) {
+    var axios = createCoreApiCall(store);
+    var api = sitewhereRestApi.API.DeviceAssignments.searchDeviceAssignmentSummaries(axios, criteria, format);
+    return loaderWrapper(store, api);
+}
+/**
  * Delete an existing device assignment.
  * @param store
  * @param token
@@ -1951,6 +1962,7 @@ exports.releaseAssignment = releaseAssignment;
 exports.routeTo = routeTo;
 exports.routeToDevice = routeToDevice;
 exports.scheduleCommandInvocation = scheduleCommandInvocation;
+exports.searchDeviceAssignmentSummaries = searchDeviceAssignmentSummaries;
 exports.searchDeviceAssignments = searchDeviceAssignments;
 exports.searchDeviceStates = searchDeviceStates;
 exports.showError = showError;
