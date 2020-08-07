@@ -463,6 +463,18 @@ function listAssignmentsForArea(store, token, criteria, format) {
     return loaderWrapper(store, api);
 }
 /**
+ * List assignments for area in summary format.
+ * @param store
+ * @param token
+ * @param criteria
+ * @param format
+ */
+function listAssignmentSummariesForArea(store, token, criteria, format) {
+    var axios = createCoreApiCall(store);
+    var api = API.Areas.listAssignmentSummariesForArea(axios, token, criteria, format);
+    return loaderWrapper(store, api);
+}
+/**
  * List device locations for area based on criteria.
  * @param store
  * @param token
@@ -788,6 +800,18 @@ function deleteCustomer(store, token) {
 function listAssignmentsForCustomer(store, token, criteria, format) {
     var axios = createCoreApiCall(store);
     var api = API.Customers.listAssignmentsForCustomer(axios, token, criteria, format);
+    return loaderWrapper(store, api);
+}
+/**
+ * List assignments for customer in summary format.
+ * @param store
+ * @param token
+ * @param criteria
+ * @param format
+ */
+function listAssignmentSummariesForCustomer(store, token, criteria, format) {
+    var axios = createCoreApiCall(store);
+    var api = API.Customers.listAssignmentSummariesForCustomer(axios, token, criteria, format);
     return loaderWrapper(store, api);
 }
 /**
@@ -1824,4 +1848,4 @@ function deleteZone(store, token) {
     return loaderWrapper(store, api);
 }
 
-export { MicroserviceIcon, NavigationIcon, activateTenantScript, arrayMove, arrayToMetadata, cloneTenantScript, createAdminWebSocketUrl, createAlertForAssignment, createArea, createAreaType, createAsset, createAssetType, createAuthApiCall, createAuthApiUrl, createBatchCommandInvocation, createCommandInvocationForAssignment, createCoreApiCall, createCoreApiUrl, createCustomer, createCustomerType, createDevice, createDeviceAssignment, createDeviceCommand, createDeviceGroup, createDeviceGroupElements, createDeviceStatus, createDeviceType, createInvocationsByAssignmentCriteria, createInvocationsByDeviceCriteria, createLocationForAssignment, createMeasurementsForAssignment, createSchedule, createTenant, createTenantScript, createUser, createZone, deleteArea, deleteAreaType, deleteAsset, deleteAssetType, deleteCustomer, deleteCustomerType, deleteDevice, deleteDeviceAssignment, deleteDeviceCommand, deleteDeviceGroup, deleteDeviceGroupElement, deleteDeviceStatus, deleteDeviceType, deleteSchedule, deleteTenant, deleteUser, deleteZone, ellipsis, formatDate, formatIso8601, fourDecimalPlaces, generateUniqueId, getArea, getAreaType, getAsset, getAssetType, getAuthoritiesHierarchy, getBatchOperation, getCustomer, getCustomerType, getDevice, getDeviceAssignment, getDeviceCommand, getDeviceGroup, getDeviceStatus, getDeviceType, getInstanceConfiguration, getInstanceMicroservices, getJwt, getSchedule, getTenant, getTenantEngineConfiguration, getTenantScriptContent, getTenantScriptMetadata, getUser, getZone, handleError, imageAuthGet, isAuthForAll, isAxiosResponse, isBlank, listAlertsForArea, listAlertsForAssignment, listAlertsForCustomer, listAreaTypes, listAreas, listAssetTypes, listAssets, listAssignmentsForArea, listAssignmentsForCustomer, listBatchOperationElements, listBatchOperations, listCommandInvocationsForAssignment, listCommandResponsesForAssignment, listCustomerTypes, listCustomers, listDeviceAssignmentHistory, listDeviceAssignments, listDeviceCommands, listDeviceCommandsByNamespace, listDeviceGroupElements, listDeviceGroups, listDeviceStatuses, listDeviceSummaries, listDeviceTypes, listDevices, listLocationsForArea, listLocationsForAssignment, listLocationsForCustomer, listMeasurementsForArea, listMeasurementsForAssignment, listMeasurementsForAssignmentAsChartSeries, listMeasurementsForCustomer, listSchedules, listScriptCategories, listScriptTemplates, listTenantConfigurationTemplates, listTenantDatasetTemplates, listTenantScriptMetadata, listTenantScriptsByCategory, listTenantScriptsForCategory, listTenants, listUsers, listZones, loaderWrapper, metadataToArray, missingAssignment, pagingForAllResults, parseIso8601, releaseAssignment, routeTo, routeToDevice, scheduleCommandInvocation, searchDeviceAssignmentSummaries, searchDeviceAssignments, searchDeviceStates, showError, showMessage, updateArea, updateAreaType, updateAsset, updateAssetType, updateCustomer, updateCustomerType, updateDevice, updateDeviceCommand, updateDeviceGroup, updateDeviceStatus, updateDeviceType, updateInstanceConfiguration, updateSchedule, updateTenant, updateTenantEngineConfiguration, updateTenantScript, updateUser, updateZone };
+export { MicroserviceIcon, NavigationIcon, activateTenantScript, arrayMove, arrayToMetadata, cloneTenantScript, createAdminWebSocketUrl, createAlertForAssignment, createArea, createAreaType, createAsset, createAssetType, createAuthApiCall, createAuthApiUrl, createBatchCommandInvocation, createCommandInvocationForAssignment, createCoreApiCall, createCoreApiUrl, createCustomer, createCustomerType, createDevice, createDeviceAssignment, createDeviceCommand, createDeviceGroup, createDeviceGroupElements, createDeviceStatus, createDeviceType, createInvocationsByAssignmentCriteria, createInvocationsByDeviceCriteria, createLocationForAssignment, createMeasurementsForAssignment, createSchedule, createTenant, createTenantScript, createUser, createZone, deleteArea, deleteAreaType, deleteAsset, deleteAssetType, deleteCustomer, deleteCustomerType, deleteDevice, deleteDeviceAssignment, deleteDeviceCommand, deleteDeviceGroup, deleteDeviceGroupElement, deleteDeviceStatus, deleteDeviceType, deleteSchedule, deleteTenant, deleteUser, deleteZone, ellipsis, formatDate, formatIso8601, fourDecimalPlaces, generateUniqueId, getArea, getAreaType, getAsset, getAssetType, getAuthoritiesHierarchy, getBatchOperation, getCustomer, getCustomerType, getDevice, getDeviceAssignment, getDeviceCommand, getDeviceGroup, getDeviceStatus, getDeviceType, getInstanceConfiguration, getInstanceMicroservices, getJwt, getSchedule, getTenant, getTenantEngineConfiguration, getTenantScriptContent, getTenantScriptMetadata, getUser, getZone, handleError, imageAuthGet, isAuthForAll, isAxiosResponse, isBlank, listAlertsForArea, listAlertsForAssignment, listAlertsForCustomer, listAreaTypes, listAreas, listAssetTypes, listAssets, listAssignmentSummariesForArea, listAssignmentSummariesForCustomer, listAssignmentsForArea, listAssignmentsForCustomer, listBatchOperationElements, listBatchOperations, listCommandInvocationsForAssignment, listCommandResponsesForAssignment, listCustomerTypes, listCustomers, listDeviceAssignmentHistory, listDeviceAssignments, listDeviceCommands, listDeviceCommandsByNamespace, listDeviceGroupElements, listDeviceGroups, listDeviceStatuses, listDeviceSummaries, listDeviceTypes, listDevices, listLocationsForArea, listLocationsForAssignment, listLocationsForCustomer, listMeasurementsForArea, listMeasurementsForAssignment, listMeasurementsForAssignmentAsChartSeries, listMeasurementsForCustomer, listSchedules, listScriptCategories, listScriptTemplates, listTenantConfigurationTemplates, listTenantDatasetTemplates, listTenantScriptMetadata, listTenantScriptsByCategory, listTenantScriptsForCategory, listTenants, listUsers, listZones, loaderWrapper, metadataToArray, missingAssignment, pagingForAllResults, parseIso8601, releaseAssignment, routeTo, routeToDevice, scheduleCommandInvocation, searchDeviceAssignmentSummaries, searchDeviceAssignments, searchDeviceStates, showError, showMessage, updateArea, updateAreaType, updateAsset, updateAssetType, updateCustomer, updateCustomerType, updateDevice, updateDeviceCommand, updateDeviceGroup, updateDeviceStatus, updateDeviceType, updateInstanceConfiguration, updateSchedule, updateTenant, updateTenantEngineConfiguration, updateTenantScript, updateUser, updateZone };

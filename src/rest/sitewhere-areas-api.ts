@@ -12,6 +12,7 @@ import {
   IDateRangeSearchCriteria,
   IDeviceAssignmentResponseFormat,
   IDeviceAssignmentSearchResults,
+  IDeviceAssignmentSummarySearchResults,
   IDeviceLocationSearchResults,
   IDeviceMeasurementSearchResults,
   IDeviceAlertSearchResults,
@@ -125,6 +126,31 @@ export function listAssignmentsForArea(
   let api: AxiosPromise<
     IDeviceAssignmentSearchResults
   > = API.Areas.listAssignmentsForArea(
+    axios,
+    token,
+    criteria,
+    format
+  );
+  return loaderWrapper(store, api);
+}
+
+/**
+ * List assignments for area in summary format.
+ * @param store 
+ * @param token 
+ * @param criteria 
+ * @param format 
+ */
+export function listAssignmentSummariesForArea(
+  store: Store<ISiteWhereUIState>,
+  token: string,
+  criteria: ISearchCriteria,
+  format: IDeviceAssignmentResponseFormat
+): Promise<AxiosResponse<IDeviceAssignmentSummarySearchResults>> {
+  let axios: AxiosInstance = createCoreApiCall(store);
+  let api: AxiosPromise<
+    IDeviceAssignmentSummarySearchResults
+  > = API.Areas.listAssignmentSummariesForArea(
     axios,
     token,
     criteria,

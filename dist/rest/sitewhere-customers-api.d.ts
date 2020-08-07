@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState } from "./sitewhere-api-wrapper";
-import { ICustomerCreateRequest, ICustomer, ICustomerSearchCriteria, ICustomerResponseFormat, ICustomerSearchResults, ISearchCriteria, IDateRangeSearchCriteria, IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults, IDeviceLocationSearchResults, IDeviceMeasurementSearchResults, IDeviceAlertSearchResults, IDeviceLocationResponseFormat, IDeviceMeasurementResponseFormat, IDeviceAlertResponseFormat } from "sitewhere-rest-api";
+import { ICustomerCreateRequest, ICustomer, ICustomerSearchCriteria, ICustomerResponseFormat, ICustomerSearchResults, ISearchCriteria, IDateRangeSearchCriteria, IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults, IDeviceAssignmentSummarySearchResults, IDeviceLocationSearchResults, IDeviceMeasurementSearchResults, IDeviceAlertSearchResults, IDeviceLocationResponseFormat, IDeviceMeasurementResponseFormat, IDeviceAlertResponseFormat } from "sitewhere-rest-api";
 /**
  * Create a new customer.
  * @param store
@@ -43,6 +43,14 @@ export declare function deleteCustomer(store: Store<ISiteWhereUIState>, token: s
  * @param format
  */
 export declare function listAssignmentsForCustomer(store: Store<ISiteWhereUIState>, token: string, criteria: ISearchCriteria, format: IDeviceAssignmentResponseFormat): Promise<AxiosResponse<IDeviceAssignmentSearchResults>>;
+/**
+ * List assignments for customer in summary format.
+ * @param store
+ * @param token
+ * @param criteria
+ * @param format
+ */
+export declare function listAssignmentSummariesForCustomer(store: Store<ISiteWhereUIState>, token: string, criteria: ISearchCriteria, format: IDeviceAssignmentResponseFormat): Promise<AxiosResponse<IDeviceAssignmentSummarySearchResults>>;
 /**
  * List device locations for a customer based on criteria.
  * @param store

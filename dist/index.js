@@ -464,6 +464,18 @@ function listAssignmentsForArea(store, token, criteria, format) {
     return loaderWrapper(store, api);
 }
 /**
+ * List assignments for area in summary format.
+ * @param store
+ * @param token
+ * @param criteria
+ * @param format
+ */
+function listAssignmentSummariesForArea(store, token, criteria, format) {
+    var axios = createCoreApiCall(store);
+    var api = sitewhereRestApi.API.Areas.listAssignmentSummariesForArea(axios, token, criteria, format);
+    return loaderWrapper(store, api);
+}
+/**
  * List device locations for area based on criteria.
  * @param store
  * @param token
@@ -789,6 +801,18 @@ function deleteCustomer(store, token) {
 function listAssignmentsForCustomer(store, token, criteria, format) {
     var axios = createCoreApiCall(store);
     var api = sitewhereRestApi.API.Customers.listAssignmentsForCustomer(axios, token, criteria, format);
+    return loaderWrapper(store, api);
+}
+/**
+ * List assignments for customer in summary format.
+ * @param store
+ * @param token
+ * @param criteria
+ * @param format
+ */
+function listAssignmentSummariesForCustomer(store, token, criteria, format) {
+    var axios = createCoreApiCall(store);
+    var api = sitewhereRestApi.API.Customers.listAssignmentSummariesForCustomer(axios, token, criteria, format);
     return loaderWrapper(store, api);
 }
 /**
@@ -1917,6 +1941,8 @@ exports.listAreaTypes = listAreaTypes;
 exports.listAreas = listAreas;
 exports.listAssetTypes = listAssetTypes;
 exports.listAssets = listAssets;
+exports.listAssignmentSummariesForArea = listAssignmentSummariesForArea;
+exports.listAssignmentSummariesForCustomer = listAssignmentSummariesForCustomer;
 exports.listAssignmentsForArea = listAssignmentsForArea;
 exports.listAssignmentsForCustomer = listAssignmentsForCustomer;
 exports.listBatchOperationElements = listBatchOperationElements;

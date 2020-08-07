@@ -387,10 +387,10 @@ semver@^6.0.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
-sitewhere-rest-api@3.0.0-beta.11:
-  version "3.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/sitewhere-rest-api/-/sitewhere-rest-api-3.0.0-beta.11.tgz#ab2be8d1dfa5bc6f4e6fcdbf11177af15468cc6f"
-  integrity sha512-Wixq362lNeoBqCvq+yqeSOs4DLdJUNhSK9xGxQBLx+9N3bdEyRDHrZYZqF5CQZbMnQpqg+cvUmV+HzQw9dBv/g==
+sitewhere-rest-api@3.0.0-beta.13:
+  version "3.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/sitewhere-rest-api/-/sitewhere-rest-api-3.0.0-beta.13.tgz#15652208981aec59a0e247dc5f64258a5baeb6a5"
+  integrity sha512-KkgcWw6s9pRMuIZw6vQ4k2a6jwLdWxdkTUVnsh+lcU2uCAzjLQJRpP6N2xCp8HENCDRvGzz8Ne2ShKF44fKOOA==
   dependencies:
     axios "^0.19.2"
 

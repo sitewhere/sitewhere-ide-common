@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState } from "./sitewhere-api-wrapper";
-import { IAreaCreateRequest, IArea, IAreaSearchCriteria, IAreaResponseFormat, IAreaSearchResults, ISearchCriteria, IDateRangeSearchCriteria, IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults, IDeviceLocationSearchResults, IDeviceMeasurementSearchResults, IDeviceAlertSearchResults, IDeviceLocationResponseFormat, IDeviceMeasurementResponseFormat, IDeviceAlertResponseFormat } from "sitewhere-rest-api";
+import { IAreaCreateRequest, IArea, IAreaSearchCriteria, IAreaResponseFormat, IAreaSearchResults, ISearchCriteria, IDateRangeSearchCriteria, IDeviceAssignmentResponseFormat, IDeviceAssignmentSearchResults, IDeviceAssignmentSummarySearchResults, IDeviceLocationSearchResults, IDeviceMeasurementSearchResults, IDeviceAlertSearchResults, IDeviceLocationResponseFormat, IDeviceMeasurementResponseFormat, IDeviceAlertResponseFormat } from "sitewhere-rest-api";
 /**
  * Create a new area.
  * @param store
@@ -43,6 +43,14 @@ export declare function deleteArea(store: Store<ISiteWhereUIState>, token: strin
  * @param format
  */
 export declare function listAssignmentsForArea(store: Store<ISiteWhereUIState>, token: string, criteria: ISearchCriteria, format: IDeviceAssignmentResponseFormat): Promise<AxiosResponse<IDeviceAssignmentSearchResults>>;
+/**
+ * List assignments for area in summary format.
+ * @param store
+ * @param token
+ * @param criteria
+ * @param format
+ */
+export declare function listAssignmentSummariesForArea(store: Store<ISiteWhereUIState>, token: string, criteria: ISearchCriteria, format: IDeviceAssignmentResponseFormat): Promise<AxiosResponse<IDeviceAssignmentSummarySearchResults>>;
 /**
  * List device locations for area based on criteria.
  * @param store

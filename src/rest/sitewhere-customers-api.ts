@@ -12,6 +12,7 @@ import {
   IDateRangeSearchCriteria,
   IDeviceAssignmentResponseFormat,
   IDeviceAssignmentSearchResults,
+  IDeviceAssignmentSummarySearchResults,
   IDeviceLocationSearchResults,
   IDeviceMeasurementSearchResults,
   IDeviceAlertSearchResults,
@@ -129,6 +130,31 @@ export function listAssignmentsForCustomer(
   let api: AxiosPromise<
     IDeviceAssignmentSearchResults
   > = API.Customers.listAssignmentsForCustomer(
+    axios,
+    token,
+    criteria,
+    format
+  );
+  return loaderWrapper(store, api);
+}
+
+/**
+ * List assignments for customer in summary format.
+ * @param store 
+ * @param token 
+ * @param criteria 
+ * @param format 
+ */
+export function listAssignmentSummariesForCustomer(
+  store: Store<ISiteWhereUIState>,
+  token: string,
+  criteria: ISearchCriteria,
+  format: IDeviceAssignmentResponseFormat
+): Promise<AxiosResponse<IDeviceAssignmentSummarySearchResults>> {
+  let axios: AxiosInstance = createCoreApiCall(store);
+  let api: AxiosPromise<
+    IDeviceAssignmentSummarySearchResults
+  > = API.Customers.listAssignmentSummariesForCustomer(
     axios,
     token,
     criteria,
