@@ -1,4 +1,4 @@
-import { API } from "sitewhere-rest-api";
+import { API, IRoleResponseFormat, IRoleSearchCriteria, IRoleSearchResults } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere-api-wrapper";
@@ -7,7 +7,6 @@ import {
   IUserCreateRequest,
   IUserSearchCriteria,
   IUserResponseFormat,
-  IGrantedAuthorityHierarchyNode,
   IUserSearchResults
 } from "sitewhere-rest-api";
 
@@ -103,15 +102,21 @@ export function listUsers(
 }
 
 /**
- * Get parent/child hierarchy for granted authorities.
+ * List roles that match the given criteria.
  * @param store
+ * @param criteria
+ * @param format
  */
-export function getAuthoritiesHierarchy(
-  store: Store<ISiteWhereUIState>
-): Promise<AxiosResponse<IGrantedAuthorityHierarchyNode[]>> {
+export function listRoles(
+  store: Store<ISiteWhereUIState>,
+  criteria: IRoleSearchCriteria,
+  format: IRoleResponseFormat
+): Promise<AxiosResponse<IRoleSearchResults>> {
   let axios: AxiosInstance = createCoreApiCall(store);
-  let api: AxiosPromise<
-    IGrantedAuthorityHierarchyNode[]
-  > = API.Users.getAuthoritiesHierarchy(axios);
+  let api: AxiosPromise<IRoleSearchResults> = API.Users.listRoles(
+    axios,
+    criteria,
+    format
+  );
   return loaderWrapper(store, api);
 }

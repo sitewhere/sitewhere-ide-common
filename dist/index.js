@@ -1787,12 +1787,14 @@ function listUsers(store, criteria, format) {
     return loaderWrapper(store, api);
 }
 /**
- * Get parent/child hierarchy for granted authorities.
+ * List roles that match the given criteria.
  * @param store
+ * @param criteria
+ * @param format
  */
-function getAuthoritiesHierarchy(store) {
+function listRoles(store, criteria, format) {
     var axios = createCoreApiCall(store);
-    var api = sitewhereRestApi.API.Users.getAuthoritiesHierarchy(axios);
+    var api = sitewhereRestApi.API.Users.listRoles(axios, criteria, format);
     return loaderWrapper(store, api);
 }
 
@@ -1909,7 +1911,6 @@ exports.getArea = getArea;
 exports.getAreaType = getAreaType;
 exports.getAsset = getAsset;
 exports.getAssetType = getAssetType;
-exports.getAuthoritiesHierarchy = getAuthoritiesHierarchy;
 exports.getBatchOperation = getBatchOperation;
 exports.getCustomer = getCustomer;
 exports.getCustomerType = getCustomerType;
@@ -1968,6 +1969,7 @@ exports.listMeasurementsForArea = listMeasurementsForArea;
 exports.listMeasurementsForAssignment = listMeasurementsForAssignment;
 exports.listMeasurementsForAssignmentAsChartSeries = listMeasurementsForAssignmentAsChartSeries;
 exports.listMeasurementsForCustomer = listMeasurementsForCustomer;
+exports.listRoles = listRoles;
 exports.listSchedules = listSchedules;
 exports.listScriptCategories = listScriptCategories;
 exports.listScriptTemplates = listScriptTemplates;

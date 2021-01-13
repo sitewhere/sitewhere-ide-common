@@ -1,7 +1,8 @@
+import { IRoleResponseFormat, IRoleSearchCriteria, IRoleSearchResults } from "sitewhere-rest-api";
 import { AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState } from "./sitewhere-api-wrapper";
-import { IUser, IUserCreateRequest, IUserSearchCriteria, IUserResponseFormat, IGrantedAuthorityHierarchyNode, IUserSearchResults } from "sitewhere-rest-api";
+import { IUser, IUserCreateRequest, IUserSearchCriteria, IUserResponseFormat, IUserSearchResults } from "sitewhere-rest-api";
 /**
  * Create a new system user.
  * @param store
@@ -36,7 +37,9 @@ export declare function deleteUser(store: Store<ISiteWhereUIState>, username: st
  */
 export declare function listUsers(store: Store<ISiteWhereUIState>, criteria: IUserSearchCriteria, format: IUserResponseFormat): Promise<AxiosResponse<IUserSearchResults>>;
 /**
- * Get parent/child hierarchy for granted authorities.
+ * List roles that match the given criteria.
  * @param store
+ * @param criteria
+ * @param format
  */
-export declare function getAuthoritiesHierarchy(store: Store<ISiteWhereUIState>): Promise<AxiosResponse<IGrantedAuthorityHierarchyNode[]>>;
+export declare function listRoles(store: Store<ISiteWhereUIState>, criteria: IRoleSearchCriteria, format: IRoleResponseFormat): Promise<AxiosResponse<IRoleSearchResults>>;
