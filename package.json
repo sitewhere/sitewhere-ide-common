@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/sitewhere/sitewhere-ide-common#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "moment": "^2.25.1",
     "sitewhere-rest-api": "3.0.0-beta.15"
   },
