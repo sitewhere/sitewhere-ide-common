@@ -16,18 +16,16 @@ export interface IAlertMessage {
 /**
  * Information required to connect to a remote SiteWhere instance.
  */
-export interface IRemoteConnection {
+export interface IRemoteInstance {
     id: string;
     name: string;
-    protocol: string;
-    host: string;
-    port: number;
+    baseUrl: string;
 }
 /**
  * Information about known remote SiteWhere instances.
  */
-export interface IRemotes {
-    connections: IRemoteConnection[];
+export interface IRemoteInstances {
+    instances: IRemoteInstance[];
     default: string;
 }
 import { Route } from "vue-router";
@@ -35,15 +33,6 @@ export declare type IPageSizes = {
     text: string;
     value: number;
 }[];
-/**
- * Information for
- */
-export interface SiteWhereServerConnectivity {
-    protocol?: string;
-    server?: string;
-    port?: number;
-    jwt?: string;
-}
 /**
  * Annotates components that can have the current route injected.
  */

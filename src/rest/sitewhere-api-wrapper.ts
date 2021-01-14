@@ -1,6 +1,6 @@
 import { Auth, AuthAPI } from "sitewhere-rest-api";
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
-import { IRemotes, IAlertMessage } from "../libraries/application-model";
+import { IRemoteInstances, IAlertMessage } from "../libraries/application-model";
 import { INavigationSection } from "../libraries/application-model";
 import { IUser, ITenant } from "sitewhere-rest-api";
 import { Store } from "vuex";
@@ -9,10 +9,8 @@ import { Store } from "vuex";
  * SiteWhere user interface state.
  */
 export interface ISiteWhereUIState {
-  remotes: IRemotes;
-  protocol?: string;
-  server?: string;
-  port?: number;
+  remoteInstances: IRemoteInstances;
+  instanceUrl?: string;
   jwt?: string;
   user?: IUser;
   authToken?: string;
@@ -31,7 +29,7 @@ export interface ISiteWhereUIState {
  */
 export function createCoreApiUrl(store: Store<ISiteWhereUIState>): string {
   let get = store.getters;
-  return `${get.protocol}://${get.server}:${get.port}/sitewhere/api/`;
+  return `${get.instanceUrl}/api/`;
 }
 
 /**
@@ -40,7 +38,7 @@ export function createCoreApiUrl(store: Store<ISiteWhereUIState>): string {
  */
 export function createAuthApiUrl(store: Store<ISiteWhereUIState>): string {
   let get = store.getters;
-  return `${get.protocol}://${get.server}:${get.port}/sitewhere/authapi/`;
+  return `${get.instanceUrl}/authapi/`;
 }
 
 /**
@@ -51,7 +49,7 @@ export function createAdminWebSocketUrl(
   store: Store<ISiteWhereUIState>
 ): string {
   let get = store.getters;
-  return `${get.protocol}://${get.server}:${get.port}/sitewhere/ws/admin/`;
+  return `${get.instanceUrl}/ws/admin/`;
 }
 
 /**

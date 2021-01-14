@@ -260,7 +260,7 @@ function arrayMove(arr, old_index, new_index) {
  */
 function createCoreApiUrl(store) {
     var get = store.getters;
-    return get.protocol + "://" + get.server + ":" + get.port + "/sitewhere/api/";
+    return get.instanceUrl + "/api/";
 }
 /**
  * Create URL for auth API request.
@@ -268,7 +268,7 @@ function createCoreApiUrl(store) {
  */
 function createAuthApiUrl(store) {
     var get = store.getters;
-    return get.protocol + "://" + get.server + ":" + get.port + "/sitewhere/authapi/";
+    return get.instanceUrl + "/authapi/";
 }
 /**
  * Create URL for web socket request.
@@ -276,7 +276,7 @@ function createAuthApiUrl(store) {
  */
 function createAdminWebSocketUrl(store) {
     var get = store.getters;
-    return get.protocol + "://" + get.server + ":" + get.port + "/sitewhere/ws/admin/";
+    return get.instanceUrl + "/ws/admin/";
 }
 /**
  * Create Axios instance for making a core API call.

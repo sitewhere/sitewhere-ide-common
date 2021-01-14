@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
-import { IRemotes, IAlertMessage } from "../libraries/application-model";
+import { IRemoteInstances, IAlertMessage } from "../libraries/application-model";
 import { INavigationSection } from "../libraries/application-model";
 import { IUser, ITenant } from "sitewhere-rest-api";
 import { Store } from "vuex";
@@ -7,10 +7,8 @@ import { Store } from "vuex";
  * SiteWhere user interface state.
  */
 export interface ISiteWhereUIState {
-    remotes: IRemotes;
-    protocol?: string;
-    server?: string;
-    port?: number;
+    remoteInstances: IRemoteInstances;
+    instanceUrl?: string;
     jwt?: string;
     user?: IUser;
     authToken?: string;
