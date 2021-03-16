@@ -1472,6 +1472,30 @@ function updateTenantEngineConfiguration(store, functionalArea, tenant, configur
     var api = sitewhereRestApi.API.Instance.updateTenantEngineConfiguration(axios, functionalArea, tenant, configuration);
     return loaderWrapper(store, api);
 }
+/**
+ * List event pipeline log entries for a tenant that match the given criteria.
+ * @param store
+ * @param tenantToken
+ * @param criteria
+ * @param format
+ * @returns
+ */
+function listInstancePipelineLogEntries(store, tenantToken, criteria, format) {
+    var axios = createCoreApiCall(store);
+    var api = sitewhereRestApi.API.Instance.listInstancePipelineLogEntries(axios, tenantToken, criteria, format);
+    return loaderWrapper(store, api);
+}
+/**
+ * Delte event pipeline log entries for a tenant.
+ * @param store
+ * @param tenantToken
+ * @returns
+ */
+function deleteInstancePipelineLogEntries(store, tenantToken) {
+    var axios = createCoreApiCall(store);
+    var api = sitewhereRestApi.API.Instance.deleteInstancePipelineLogEntries(axios, tenantToken);
+    return loaderWrapper(store, api);
+}
 
 /**
  * Create a new schedule.
@@ -1898,6 +1922,7 @@ exports.deleteDeviceGroup = deleteDeviceGroup;
 exports.deleteDeviceGroupElement = deleteDeviceGroupElement;
 exports.deleteDeviceStatus = deleteDeviceStatus;
 exports.deleteDeviceType = deleteDeviceType;
+exports.deleteInstancePipelineLogEntries = deleteInstancePipelineLogEntries;
 exports.deleteSchedule = deleteSchedule;
 exports.deleteTenant = deleteTenant;
 exports.deleteUser = deleteUser;
@@ -1962,6 +1987,7 @@ exports.listDeviceStatuses = listDeviceStatuses;
 exports.listDeviceSummaries = listDeviceSummaries;
 exports.listDeviceTypes = listDeviceTypes;
 exports.listDevices = listDevices;
+exports.listInstancePipelineLogEntries = listInstancePipelineLogEntries;
 exports.listLocationsForArea = listLocationsForArea;
 exports.listLocationsForAssignment = listLocationsForAssignment;
 exports.listLocationsForCustomer = listLocationsForCustomer;

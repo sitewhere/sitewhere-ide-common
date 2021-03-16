@@ -5,7 +5,10 @@ import { ISiteWhereUIState, createCoreApiCall, loaderWrapper } from "./sitewhere
 import {
   IMicroserviceSummary,
   ITenantEngineConfiguration,
-  IInstanceConfiguration
+  IInstanceConfiguration,
+  IEventPipelineLogSearchCriteria,
+  IEventPipelineLogResponseFormat,
+  IEventPipelineLogSearchResults
 } from "sitewhere-rest-api";
 
 /**
@@ -93,5 +96,45 @@ export function updateTenantEngineConfiguration(
     tenant,
     configuration
   );
+  return loaderWrapper(store, api);
+}
+
+/**
+ * List event pipeline log entries for a tenant that match the given criteria.
+ * @param store 
+ * @param tenantToken 
+ * @param criteria 
+ * @param format 
+ * @returns 
+ */
+export function listInstancePipelineLogEntries(
+  store: Store<ISiteWhereUIState>,
+  tenantToken: string,
+  criteria?: IEventPipelineLogSearchCriteria,
+  format?: IEventPipelineLogResponseFormat
+): Promise<AxiosResponse<IEventPipelineLogSearchResults>> {
+  let axios: AxiosInstance = createCoreApiCall(store);
+  let api: AxiosPromise<IEventPipelineLogSearchResults> = API.Instance.listInstancePipelineLogEntries(
+    axios,
+    tenantToken,
+    criteria,
+    format);
+  return loaderWrapper(store, api);
+}
+
+/**
+ * Delte event pipeline log entries for a tenant.
+ * @param store 
+ * @param tenantToken 
+ * @returns 
+ */
+export function deleteInstancePipelineLogEntries(
+  store: Store<ISiteWhereUIState>,
+  tenantToken: string,
+): Promise<AxiosResponse<void>> {
+  let axios: AxiosInstance = createCoreApiCall(store);
+  let api: AxiosPromise<void> = API.Instance.deleteInstancePipelineLogEntries(
+    axios,
+    tenantToken);
   return loaderWrapper(store, api);
 }

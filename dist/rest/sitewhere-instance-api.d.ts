@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { Store } from "vuex";
 import { ISiteWhereUIState } from "./sitewhere-api-wrapper";
-import { IMicroserviceSummary, ITenantEngineConfiguration, IInstanceConfiguration } from "sitewhere-rest-api";
+import { IMicroserviceSummary, ITenantEngineConfiguration, IInstanceConfiguration, IEventPipelineLogSearchCriteria, IEventPipelineLogResponseFormat, IEventPipelineLogSearchResults } from "sitewhere-rest-api";
 /**
  * Get currently effective instance configuration.
  * @param store
@@ -33,3 +33,19 @@ export declare function getTenantEngineConfiguration(store: Store<ISiteWhereUISt
  * @param configuration
  */
 export declare function updateTenantEngineConfiguration(store: Store<ISiteWhereUIState>, functionalArea: string, tenant: string, configuration: any): Promise<AxiosResponse<ITenantEngineConfiguration>>;
+/**
+ * List event pipeline log entries for a tenant that match the given criteria.
+ * @param store
+ * @param tenantToken
+ * @param criteria
+ * @param format
+ * @returns
+ */
+export declare function listInstancePipelineLogEntries(store: Store<ISiteWhereUIState>, tenantToken: string, criteria?: IEventPipelineLogSearchCriteria, format?: IEventPipelineLogResponseFormat): Promise<AxiosResponse<IEventPipelineLogSearchResults>>;
+/**
+ * Delte event pipeline log entries for a tenant.
+ * @param store
+ * @param tenantToken
+ * @returns
+ */
+export declare function deleteInstancePipelineLogEntries(store: Store<ISiteWhereUIState>, tenantToken: string): Promise<AxiosResponse<void>>;
